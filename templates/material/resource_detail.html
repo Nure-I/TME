@@ -1,0 +1,160 @@
+{% extends 'base.html'%} {% load static %} {% block content %}
+
+<div class="main-panel">
+  <div class="content-wrapper">
+    <p class="card-title">Resource / Resource_Detail</p>
+    <p class="card-description">
+      You can edit the <code>{{resource}}</code>resource.
+    </p>
+    <div class="row">
+      <div class="col-md-12 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <div class="col-md-12 mb-0 grid-margin">
+              <div class="row">
+                <div
+                  class="col-md-12 col-xl-12 mb-xl-0 justify-content-between d-flex"
+                >
+                  <a
+                    class="nav-link"
+                    data-toggle="collapse"
+                    href="#uif-basic"
+                    aria-expanded="true"
+                    aria-controls="uif-basic"
+                  >
+                    <p class="card-title">Update Resource</p>
+                  <div class="dropdown">
+                    <button
+                      class="btn btn-primary"
+                     
+                    >
+                       +
+                    </button>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+           
+              <div class="col-md-8 mb-4 transparent">
+                <form method="post">
+                  {% csrf_token %}
+                  <input type="hidden" name="form_identifier" value="ResourceForm">
+                  {{ form.as_p }}
+                  <div class="mt-4">
+                    <button
+                      class="btn btn-primary font-weight-medium auth-form-btn"
+                      type="submit"
+                    >
+                      Update Resource
+                    </button>
+                    <button
+                      class="btn btn-danger font-weight-medium auth-form-btn"
+                      type="button"
+                      class="btn btn-primary"
+                      data-toggle="modal"
+                      data-target="#removeResource"
+                      type="submit"
+                    >
+                      Delete Resource
+                    </button>
+                  </div>
+                </form>
+              </div>
+           
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      
+    </div>
+  </div>
+  <!-- content-wrapper ends -->
+  <!-- partial:partials/_footer.html -->
+  <footer class="footer">
+    <div class="d-sm-flex justify-content-center justify-content-sm-between">
+      <span
+        class="text-muted text-center text-sm-left d-block d-sm-inline-block"
+        >Copyright © 2023. All rights reserved.</span
+      >
+      <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"
+        >MAde By <i class="ti-heart text-danger ml-1"> SemiTech</i></span
+      >
+    </div>
+  </footer>
+  <!-- partial -->
+</div>
+<!-- main-panel ends -->
+<!-- Button trigger modal  remove Resource -->
+<div class="modal fade" id="removeResource"  tabindex="-1"   role="dialog"    aria-labelledby="removeResource" aria-hidden="false">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">
+          <span class="text-danger">Warnng! </span>
+        </h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h5 class="modal-title" id="exampleModalLabel">
+          Are You Sure You Want To Remove "<span class="text-primary"
+            >{{Resource}} </span
+          >" Coourse ?
+        </h5>
+        <span class="text-danger"
+          >Note: it will be deleted permanently!
+        </span>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">
+          cancel
+        </button>
+        <a
+          href="{% url 'removeResource' resource.id%}"
+          type="submit"
+          class="btn btn-danger"
+          >Yes Remove</a
+        >
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Button trigger modal  Add New resource -->
+<div class="modal fade" id="addResourceModal" tabindex="-1" role="dialog" aria-labelledby="addResourceModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addResourceModalLabel">Add New Resource</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- Include a form for adding a new resource -->
+        <form method="post" action="{% url 'createResource' %}">
+          {% csrf_token %}
+          {{ rform.as_p }}
+          <input type="hidden" name="Resource" value="{{Resource.id}}">
+          <button class="btn btn-primary font-weight-medium auth-form-btn" type="submit">
+                      Add Resource
+                    </button>
+                    <button type="button" class="btn btn-warning" data-dismiss="modal">
+                      cancel
+                    </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock%}

@@ -1,0 +1,226 @@
+<nav class="sidebar sidebar-offcanvas" id="sidebar">
+  {% comment %} 
+  Yemiftahhhhhhhhhh
+  ❌❌❌❌
+  ❌❌❌❌❌
+  ❌❌❌❌
+  {% endcomment %}
+  <ul class="nav">
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'index' %}">
+        <i class="icon-grid menu-icon"></i>
+        <span class="menu-title">Dashboard</span>
+      </a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="collapse" href="#ui-bassic" aria-expanded="false" aria-controls="ui-bassic">
+        <i class="ti-list menu-icon "></i>
+        <span class="menu-title">Course</span>
+        <i class="menu-arrow"></i>
+      </a>
+      <div class="collapse" id="ui-bassic">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item"> <a class="nav-link" href="{% url 'createCourse'%}">Add Couse</a></li>
+          <li class="nav-item"> <a class="nav-link" href="{% url 'courseList'%}">View Couse</a></li>
+          </ul>
+      </div>
+    </li>
+ 
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'resourceList' %}">
+        <i class="icon-grid menu-icon"></i>
+        <span class="menu-title">Resource List</span>
+      </a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="collapse" href="#charts" aria-expanded="false" aria-controls="charts">
+        <i class="icon-bar-graph menu-icon"></i>
+        <span class="menu-title">Resource</span>
+        <i class="menu-arrow"></i>
+      </a>
+      <div class="collapse" id="charts">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item"><a class="nav-link" href="" data-toggle="modal" data-target="#addResourceModal">Add NEW</a></li>
+          <li class="nav-item"><a class="nav-link" href="pages/forms/basic_elements.html">View Resource</a></li>
+        </ul>
+      </div>
+    </li>
+  {% if request.user.groups.all.0.name == 'Custodian' %}
+  <ul class="nav">
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'index' %}">
+        <i class="icon-grid menu-icon"></i>
+        <span class="menu-title">Dashboard</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="collapse" href="#ui-bassic" aria-expanded="false" aria-controls="ui-bassic">
+        <i class="ti-home menu-icon "></i>
+        <span class="menu-title">Store</span>
+        <i class="menu-arrow"></i>
+      </a>
+      <div class="collapse" id="ui-bassic">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item"> <a class="nav-link" href="{% url 'book_store' %}">Book Store</a></li>
+          <li class="nav-item"> <a class="nav-link" href="{% url 'item_store' %}">Item Store</a></li>
+          </ul>
+      </div>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'add_to_store' %}">
+        <i class="icon-contract menu-icon"></i>
+        <span class="menu-title">Recieve Items</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+        <i class="icon-paper menu-icon"></i>
+        <span class="menu-title">Item List</span>
+        <i class="menu-arrow"></i>
+      </a>
+      <div class="collapse" id="ui-basic">
+        <ul class="nav flex-column sub-menu">
+
+          <li class="nav-item">
+             <a class="nav-link" href="{% url 'create_category' %}">Create Category</a></li>
+          <li class="nav-item"> <a class="nav-link" href="{% url 'create_item' %}">Create New Item</a></li>
+          <li class="nav-item"> <a class="nav-link" href="{% url 'create_book' %}">Create New Book</a></li>
+        </ul>
+      </div>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
+        <i class="icon-columns menu-icon"></i>
+        <span class="menu-title">Requests</span>
+        <i class="menu-arrow"></i>
+      </a>
+      <div class="collapse" id="form-elements">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item"><a class="nav-link" href="{% url 'gebi_request' %}">ገቢ Request</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'wechi_request' %}">ወጪ Request</a></li>
+        </ul>
+      </div>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="collapse" href="#charts" aria-expanded="false" aria-controls="charts">
+        <i class="icon-bar-graph menu-icon"></i>
+        <span class="menu-title">Report</span>
+        <i class="menu-arrow"></i>
+      </a>
+      <div class="collapse" id="charts">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item"><a class="nav-link" href="pages/forms/basic_elements.html">ገቢ ሪፖርት</a></li>
+          <li class="nav-item"><a class="nav-link" href="pages/forms/basic_elements.html">ወጪ ሪፖርት</a></li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+
+
+
+
+
+  {% comment %} 
+  Yemiftahhhhhhhhhh
+  ❌❌❌❌
+  
+  Ye Manager
+
+  ❌❌❌❌
+  {% endcomment %}
+
+  {% elif request.user.groups.all.0.name == 'Manager' %}
+  <ul class="nav">
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'index' %}">
+        <i class="icon-grid menu-icon"></i>
+        <span class="menu-title">Dashboard</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="collapse" href="#ui-bassic" aria-expanded="false" aria-controls="ui-bassic">
+        <i class="ti-home menu-icon "></i>
+        <span class="menu-title">Store</span>
+        <i class="menu-arrow"></i>
+      </a>
+      <div class="collapse" id="ui-bassic">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item"> <a class="nav-link" href="{% url 'book_store' %}">Book Store</a></li>
+          <li class="nav-item"> <a class="nav-link" href="{% url 'item_store' %}">Item Store</a></li>
+          </ul>
+      </div>
+    </li>
+ 
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+        <i class="icon-paper menu-icon"></i>
+        <span class="menu-title">Users</span>
+        <i class="menu-arrow"></i>
+      </a>
+      <div class="collapse" id="ui-basic">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item"> <a class="nav-link" data-toggle="modal" href="" data-target="#new_user">Add New</a></li>
+          <li class="nav-item"> <a class="nav-link" href="{% url 'directors' %}">Directors</a></li>
+          <li class="nav-item"> <a class="nav-link" href="{% url 'custodians' %}">Custodian</a></li>
+        </ul>
+      </div>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
+        <i class="icon-columns menu-icon"></i>
+        <span class="menu-title">Requests</span>
+        <i class="menu-arrow"></i>
+      </a>
+      <div class="collapse" id="form-elements">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item"><a class="nav-link" href="{% url 'gebi_request' %}">ገቢ Request</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'wechi_request' %}">ወጪ Request</a></li>
+        </ul>
+      </div>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="collapse" href="#charts" aria-expanded="false" aria-controls="charts">
+        <i class="icon-bar-graph menu-icon"></i>
+        <span class="menu-title">Report</span>
+        <i class="menu-arrow"></i>
+      </a>
+      <div class="collapse" id="charts">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item"><a class="nav-link" href="pages/forms/basic_elements.html">ገቢ ሪፖርት</a></li>
+          <li class="nav-item"><a class="nav-link" href="pages/forms/basic_elements.html">ወጪ ሪፖርት</a></li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+
+
+
+
+  {% comment %} 
+  Yemiftahhhhhhhhhh
+  ❌❌❌❌
+  
+  Ye director
+
+  ❌❌❌❌
+  {% endcomment %}
+
+  {% elif request.user.groups.all.0.name == 'Director' %}
+  <ul class="nav">
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'get_from_store' %}">
+        <i class="icon-contract menu-icon"></i>
+        <span class="menu-title">Request Items</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'add_to_store' %}">
+        <i class="icon-paper menu-icon"></i>
+        <span class="menu-title">My Requests</span>
+      </a>
+    </li>
+  </ul>
+  {%endif%}
+</nav>

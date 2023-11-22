@@ -1,0 +1,167 @@
+{% extends 'base.html'%} {% load static %} {% block content %}
+<!-- partial -->
+<div class="main-panel">
+  <div class="content-wrapper">
+    <p class="card-title">Course / Course_Detail</p>
+    <p class="card-description">
+      You can edit the <code>{{course}}</code>Course.
+    </p>
+    <div class="row">
+      <div class="col-md-6 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            {% comment %} {% if page == 'course' %} {% endcomment %}
+            <a
+              class="nav-link"
+              data-toggle="collapse"
+              href="#uif-basic"
+              aria-expanded="true"
+              aria-controls="uif-basic"
+            >
+              <p class="card-title">Update Course</p></a
+            >
+            {% comment %}
+            <h4 class="card-title">Update Course</h4>
+            {% endcomment %}
+            <div class="row collapse" id="uif-basic">
+              <div class="col-md-12 mb-4 stretch-card transparent">
+              
+              <form method="post">
+                {% csrf_token %} {{ form.as_p }} {% comment %} {{
+                password_form.as_p }} {% endcomment %}
+                <div class="mt-6">
+                  <button
+                    class="btn btn-primary btn-sm font-weight-medium auth-form-btn"
+                    type="submit"
+                  >
+                    Update Course
+                  </button>
+                  <button
+                    class="btn btn-danger btn-sm font-weight-medium auth-form-btn"
+                    type="button"
+                    class="btn btn-primary"
+                    data-toggle="modal"
+                    data-target="#removeCourse"
+                    type="submit"
+                  >
+                    Delete Course
+                  </button>
+                </div>
+              </form>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+
+      <div class="col-md-6 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            {% comment %} {% if page == 'course' %} {% endcomment %}
+            <a
+              class="nav-link"
+              data-toggle="collapse"
+              href="#subTopic"
+              aria-expanded="true"
+              aria-controls="subTopic"
+            >
+              <p class="card-title">Update Sub Topics</p></a
+            >
+            {% comment %}
+            <h4 class="card-title">Update Course</h4>
+            {% endcomment %}
+            <div class="row collapse" id="subTopic">
+              <div class="col-md-12 mb-4 stretch-card transparent">
+              
+              <form method="post">
+                {% csrf_token %} {{ form.as_p }} {% comment %} {{
+                password_form.as_p }} {% endcomment %}
+                <div class="mt-6">
+                  <button
+                    class="btn btn-primary btn-sm font-weight-medium auth-form-btn"
+                    type="submit"
+                  >
+                    Update Course
+                  </button>
+                  <button
+                    class="btn btn-danger btn-sm font-weight-medium auth-form-btn"
+                    type="button"
+                    class="btn btn-primary"
+                    data-toggle="modal"
+                    data-target="#removeCourse"
+                    type="submit"
+                  >
+                    Delete Course
+                  </button>
+                </div>
+              </form>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+   
+
+    
+    </div>
+  </div>
+
+  <div class="modal fade" id="removeCourse"  tabindex="-1"   role="dialog"    aria-labelledby="removeCourse" aria-hidden="false">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">
+            <span class="text-danger">Warnng! </span>
+          </h5>
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <h5 class="modal-title" id="exampleModalLabel">
+            Are You Sure You Want To Remove "<span class="text-primary"
+              >{{course}} </span
+            >" Coourse ?
+          </h5>
+          <span class="text-danger"
+            >Note: it will be deleted permanently!
+          </span>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">
+            cancel
+          </button>
+          <a
+            href="{% url 'removeCourse' course.id%}"
+            type="submit"
+            class="btn btn-danger"
+            >Yes Remove</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- content-wrapper ends -->
+  <!-- partial:partials/_footer.html -->
+  <footer class="footer">
+    <div class="d-sm-flex justify-content-center justify-content-sm-between">
+      <span
+        class="text-muted text-center text-sm-left d-block d-sm-inline-block"
+        >Copyright © 2023. All rights reserved.</span
+      >
+      <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"
+        >MAde By <i class="ti-heart text-danger ml-1"> SemiTech</i></span
+      >
+    </div>
+  </footer>
+  <!-- partial -->
+</div>
+{% endblock%}

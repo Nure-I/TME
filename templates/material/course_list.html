@@ -1,0 +1,106 @@
+{% extends 'base.html'%} {% load static %} {% block content %}
+<!-- partial -->
+<div class="main-panel">
+  <div class="content-wrapper">
+    <div class="row">
+      <div class="col-md-12 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <p class="card-title">List Of Course</p>
+
+            <div class="col-lg-12 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  {% comment %} {% if page == 'course' %} {% endcomment %}
+                  <h4 class="card-title">courses</h4>
+                  <p class="card-description">
+                    A list of<code>Courses</code>found in the system.
+                  </p>
+                  <div class="table-responsive">
+                    <table class="table table-hover">
+                      <thead>
+                        <tr>
+                          <th>NO</th>
+                          <th>Course Name</th>
+                          <th>Description</th>
+                          <th>Difficulty_level</th>
+                          <th>Tags</th>
+                          <th>Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for course in courses %}
+                        <tr>
+                          <td>{{ forloop.counter }}</td>
+                          <td>{{ course }}</td>
+                          <td>{{ course.description }}</td>
+                          <td>
+                            <label class="badge badge-info"
+                              >{{ course.difficulty_level.upper }}</label
+                            >
+                          </td>
+                          <td>{{ course.tags }}</td>
+                          <td><a class="btn btn-light" href="{% url 'courseDetail' course.id %}"><i class="ti-pencil menu-icon text-primary"></i></a></td>
+                        </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                  </div>
+
+                  {% if page == 'course' %} {% elif page == 'custodian'%}
+                  <h4 class="card-title">Custodian</h4>
+                  <p class="card-description">
+                    A list of<code>Custodians</code>found in Andelus.
+                  </p>
+                  <div class="table-responsive">
+                    <table class="table table-hover">
+                      <thead>
+                        <tr>
+                          <th>First Name</th>
+                          <th>Last Name</th>
+                          <th>Email</th>
+                          <th>Position</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for course in user %}
+                        <tr>
+                          <td>{{ course }}</td>
+                          <td>{{ course.email }}</td>
+                          <td>{{ course.email }}</td>
+                          <td>{{ course.groups.all.0.name }}</td>
+                          <td></td>
+                          <td>
+                            <label class="badge badge-info">Detail</label>
+                          </td>
+                        </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                  </div>
+
+                  {%endif%}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- content-wrapper ends -->
+  <!-- partial:partials/_footer.html -->
+  <footer class="footer">
+    <div class="d-sm-flex justify-content-center justify-content-sm-between">
+      <span
+        class="text-muted text-center text-sm-left d-block d-sm-inline-block"
+        >Copyright © 2023. Andelus School All rights reserved.</span
+      >
+      <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"
+        >MAde By <i class="ti-heart text-danger ml-1">Abivm</i></span
+      >
+    </div>
+  </footer>
+  <!-- partial -->
+</div>
+{% endblock%}

@@ -1,0 +1,316 @@
+{% extends 'base.html'%} {% load static %} {% block content %}
+
+<div class="main-panel">
+  <div class="content-wrapper">
+    <p class="card-title">Course / Course_Detail</p>
+    <p class="card-description">
+      You can edit the <code>{{course}}</code>Course.
+    </p>
+    <div class="row">
+      <div class="col-md-12 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <div class="col-md-12 mb-0 grid-margin">
+              <div class="row">
+                <div
+                  class="col-md-12 col-xl-12 mb-xl-0 justify-content-between d-flex"
+                >
+                  <a
+                    class="nav-link"
+                    data-toggle="collapse"
+                    href="#uif-basic"
+                    aria-expanded="true"
+                    aria-controls="uif-basic"
+                  >
+                    <p class="card-title">Update Course</p>
+                  <div class="dropdown">
+                    <button
+                     
+                      class="btn btn-primary"
+                     
+                    >
+                       +
+                    </button>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row collapse" id="uif-basic">
+              <div class="col-md-8 mb-4 transparent">
+                <form method="post">
+                  {% csrf_token %}
+                  <input type="hidden" name="form_identifier" value="courseForm">
+                  {{ form.as_p }}
+                  <div class="mt-4">
+                    <button
+                      class="btn btn-primary font-weight-medium auth-form-btn"
+                      type="submit"
+                    >
+                      Update Course
+                    </button>
+                    <button
+                      class="btn btn-danger font-weight-medium auth-form-btn"
+                      type="button"
+                      class="btn btn-primary"
+                      data-toggle="modal"
+                      data-target="#removeCourse"
+                      type="submit"
+                    >
+                      Delete Course
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <div class="col-md-12 mb-0 grid-margin">
+              <div class="row">
+                <div
+                  class="col-md-12 col-xl-12 mb-xl-0 justify-content-between d-flex"
+                >
+                  <a
+                    class="nav-link"
+                    data-toggle="collapse"
+                    href="#uiff-basic"
+                    aria-expanded="true"
+                    aria-controls="uif-basic"
+                  >
+                    <p class="card-title">Sub Topic For " {{course}} " Course</p>
+                  <div class="dropdown">
+                    <a  class="btn btn-primary"
+                      href="#" data-toggle="modal" data-target="#addSubTopic"  >  +  </a>
+                    </a >
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row collapse" id="uiff-basic">
+              {% comment %} le list of topics bleh yatefahew new {% endcomment %}
+              {% comment %} <div class="col-md-8 mb-4 transparent">
+                <form method="post">
+                  {% csrf_token %}
+                  <input type="hidden" name="form_identifier" value="subtopicForm">
+                  {% for field in sform %}
+                  {# Render each form field individually #}
+                  {{ field.label_tag }} {{ field }} {{ field.help_text }}
+                  {% if field.name == 'resources' %}
+                    <a href="#" data-toggle="modal" data-target="#addResourceModal">Add New Resource</a>
+                  {% endif %}
+                {% endfor %}
+                  <div class="mt-4">
+                    <button
+                      class="btn btn-primary font-weight-medium auth-form-btn"
+                      type="submit"
+                    >
+                      save
+                    </button>
+                    <button
+                      class="btn btn-primary font-weight-medium auth-form-btn"
+                      type="submit"
+                    >
+                      save and add another
+                    </button>
+                    <button
+                      class="btn btn-danger font-weight-medium auth-form-btn"
+                      type="button"
+                      class="btn btn-primary"
+                      data-toggle="modal"
+                      data-target="#removeCourse"
+                      type="submit"
+                    >
+                      Delete Course
+                    </button>
+                  </div>
+                </form>
+              </div> {% endcomment %}
+           
+              {% for topic in subTopics %}
+              <div class="col-md-3 mb-4 stretch-card transparent">
+                <div class="card card-tale">
+                  <div class="card-body">
+                    <p class="mb-2">{{topic}}</p>
+                    <p class="">({{topic.order}})</p>
+                    {% for r in topic.resources_set.all %}
+                    <img src="{% static 'img/andelus-logo1.png '%}" width="75px" class="mr-4" alt="logo"/>
+                    {{r}}
+                    {%endfor%}
+                    <a href="{% url 'subTopicDetail' topic.id %}" class="btn btn-info">Detail</a>
+                  </div>
+                </div>
+              </div>
+              {%endfor%}
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- content-wrapper ends -->
+  <!-- partial:partials/_footer.html -->
+  <footer class="footer">
+    <div class="d-sm-flex justify-content-center justify-content-sm-between">
+      <span
+        class="text-muted text-center text-sm-left d-block d-sm-inline-block"
+        >Copyright © 2023. Andelus School All rights reserved.</span
+      >
+      <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"
+        >MAde By <i class="ti-heart text-danger ml-1">Abivm</i></span
+      >
+    </div>
+  </footer>
+  <!-- partial -->
+</div>
+<!-- main-panel ends -->
+<!-- Button trigger modal  remove course -->
+<div class="modal fade" id="removeCourse"  tabindex="-1"   role="dialog"    aria-labelledby="removeCourse" aria-hidden="false">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">
+          <span class="text-danger">Warnng! </span>
+        </h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h5 class="modal-title" id="exampleModalLabel">
+          Are You Sure You Want To Remove "<span class="text-primary"
+            >{{course}} </span
+          >" Coourse ?
+        </h5>
+        <span class="text-danger"
+          >Note: it will be deleted permanently!
+        </span>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">
+          cancel
+        </button>
+        <a
+          href="{% url 'removeCourse' course.id%}"
+          type="submit"
+          class="btn btn-danger"
+          >Yes Remove</a
+        >
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Button trigger modal  Add New Subtopics -->
+<div class="modal fade" id="addSubTopic" tabindex="-1" role="dialog" aria-labelledby="addResourceModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addResourceModalLabel">Add New Sub Topic</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- Include a form for adding a new Sub Topic -->
+        <form method="post" action="{% url 'createSubTopic' course.id %}" id="subtopicForm">
+          {% csrf_token %}
+          <input type="hidden" name="form_identifier" value="subtopicForm">
+          {% for field in sform %}
+          {# Render each form field individually #}
+          {{ field.label_tag }} {{ field }} {{ field.help_text }}
+          {% if field.name == 'resources' %}
+            <a href="#" data-toggle="modal" data-target="#addResourceModal">Add New Resource</a>
+          {% endif %}
+        {% endfor %}
+          <div class="mt-4">
+            <button
+              class="btn btn-primary font-weight-medium auth-form-btn"
+              type="submit"
+            >
+              save
+            </button>
+            <button
+              class="btn btn-primary font-weight-medium auth-form-btn saveAndContinueButton"
+              type="submit"  
+            >
+              save and add another
+            </button>
+            {% comment %} <script>
+              document.getElementById('subtopicForm').addEventListener('submit', function (event) {
+                var saveAndContinueButton = event.submitter && event.submitter.classList.contains('saveAndContinueButton');
+                if (saveAndContinueButton) {
+                  event.preventDefault(); // Prevent default form submission
+            
+                  // Display the modal after hitting "Save and Continue"
+                  var modal = new bootstrap.Modal(document.getElementById('addSubTopic'));
+                  modal.show();
+            
+                  // Optionally, you can add a delay before submitting the form
+                  setTimeout(function () {
+                    event.target.submit();
+                  }, 500); // Adjust the delay as needed
+                }
+              });
+            </script> {% endcomment %}
+            
+          
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  $(document).ready(function () {
+    // Check if the 'show_modal' query parameter is present
+    var show_modal = new URLSearchParams(window.location.search).get('show_modal');
+
+    if (show_modal === 'true') {
+      var modal = new bootstrap.Modal(document.getElementById('addSubTopic'));
+      modal.show();
+    }
+  });
+</script>
+<!-- Button trigger modal  Add New resource -->
+<div class="modal fade" id="addResourceModal" tabindex="-1" role="dialog" aria-labelledby="addResourceModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addResourceModalLabel">Add New Resource</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- Include a form for adding a new resource -->
+        <form method="post" action="{% url 'createResource' %}">
+          {% csrf_token %}
+          {{ rform.as_p }}
+          <input type="hidden" name="course" value="{{course.id}}">
+          <input type="hidden" name="next" value="{{ request.path }}">
+          <button class="btn btn-primary font-weight-medium auth-form-btn" type="submit">
+                      Add Resource
+                    </button>
+                    <button type="button" class="btn btn-warning" data-dismiss="modal">
+                      cancel
+                    </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock%}

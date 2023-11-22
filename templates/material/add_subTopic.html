@@ -1,0 +1,54 @@
+{% extends 'base.html'%} {% load static %} {% block content %}
+<!-- partial -->
+<div class="main-panel">
+  <div class="content-wrapper">
+    <div class="row">
+      <div class="col-md-12 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <p class="card-title">Sub Topic</p>
+
+            <div class="col-lg-12 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  {% comment %} {% if page == 'course' %} {% endcomment %}
+                  <h4 class="card-title">Add New courses</h4>
+                  <p class="card-description">
+                    Fill the following <code>Form</code>To add Sub Topic.
+                  </p>
+                  <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                   
+                    {% comment %} {{ password_form.as_p }} {% endcomment %}
+                    <div class="mt-6">
+                      <button
+                        class="btn btn-primary btn-sm font-weight-medium auth-form-btn"
+                        type="submit"
+                        >Create Course</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- content-wrapper ends -->
+  <!-- partial:partials/_footer.html -->
+  <footer class="footer">
+    <div class="d-sm-flex justify-content-center justify-content-sm-between">
+      <span
+        class="text-muted text-center text-sm-left d-block d-sm-inline-block"
+        >Copyright © 2023. All rights reserved.</span
+      >
+      <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"
+        >MAde By <i class="ti-heart text-danger ml-1"> SemiTech</i></span
+      >
+    </div>
+  </footer>
+  <!-- partial -->
+</div>
+{% endblock%}
