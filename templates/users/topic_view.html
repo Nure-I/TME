@@ -1,0 +1,317 @@
+{% extends 'base.html'%} {% load static %} {% block content %}
+
+{% if page == 'topic'%}
+
+  <nav class="sidebar sidebar-offcanvas" id="sidebar">
+    <ul class="nav">
+    {%for topic in topics %}
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'topicView' topic.id %}">
+        <i class="icon-grid menu-icon"></i>
+        <span class="menu-title">{{topic.name}}</span>
+      </a>
+    </li>
+    {%endfor%}
+  </nav>
+{%endif%}
+
+{%if topic.order == 1 %}
+
+<div class="main-panel">          
+  <div class="content-wrapper">
+    <div class="row">
+      
+      <div class="col-md-12 grid-margin">
+        <div class="row">
+          
+          <div class="col-12 col-xl-8 mb-4 mb-xl-0">
+            <h3 class="font-weight-bold"><span class="text-primary">{{topic}}</span> Tutorial</h3>
+            <h6 class="font-weight-normal mb-0">All systems are running smoothly! You have <span class="text-primary">3 unread alerts!</h6>
+          </div>
+
+          <div class="col-12 col-xl-4 mb-4">
+           <div class="justify-content-end d-flex">
+            <div class="dropdown flex-md-grow-1 flex-xl-grow-0">
+              <button class="btn btn-sm btn-light bg-white dropdown-toggle" type="button" id="dropdownMenuDate2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+               <i class="mdi mdi-calendar"></i> Today (10 Jan 2021)
+              </button>
+            </div>
+           </div>
+          </div>
+
+          <div class="col-12 col-xl-8 mb-4 mb-xl-0">
+            <a href="{% url 'topicView' topic.id %}?direction=prev"  class="btn btn-primary"> &lt; Previous</a></div>
+            <div class="col-12 col-xl-4 mb-4">
+              <div class="justify-content-start d-flex">
+               <div class="dropdown flex-md-grow-1 flex-xl-grow-0">
+                <a href="{% url 'topicView' topic.id %}?direction=next"  class="btn btn-primary"> &lt; Next</a></div>
+               </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-xl-8 mb-0">  
+        </div>
+      </div>
+
+      <div class="col-12 grid-margin stretch-card">
+        <div class="card">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card-body">
+                <h4 class="card-title">Learn {{topic}}</h4>
+                <p class="card-description">{{topic.descriptions|safe}} <code>.btn-{color}</code> for buttons in theme colors</p>
+                <button type="button" class="btn btn-success btn-rounded btn-fw">Start Learning {{topic}} now &gt;&gt;</button>
+              </div>
+              <hr>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      {% comment %} Exanples {% endcomment %}
+      <div class="col-12 grid-margin stretch-card">
+        <div class="card">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card-body ">
+                <h4 class="card-title">Examples in Each topics</h4>
+                <p class="card-description">The "Try it Yourself" editor makes it easy to learn {{topic}}. You can edit 
+                  {{topic}} code and view the result in the simulation.</p>
+                <div class="card tale-bg">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="card-body">
+                        <h4 class="card-title">Examples</h4>
+                        <code>&lt;html&gt;&lt;/html&gt;</code> are 
+                        wrapped as an inline elements.
+                        <pre>
+                            &lt;head&gt;
+                                &lt;title&gt;
+                                    GeeksforGeeks Bootstrap Code Example
+                                &lt;/title&gt;
+                            &lt;/head&gt;
+                        </pre>  <button type="button" class="btn btn-success btn-rounded btn-fw">Try it Yourself &gt;&gt;</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {% comment %} Reference {% endcomment %}
+      <div class="col-12 grid-margin stretch-card">
+        <div class="card">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card-body">
+                <h4 class="card-title">{{topic}} Reference</h4>
+                <p class="card-description">Some List of links for additional Reference</p>
+                <div class="template-demo">
+                  {% for reference in topic.resources.all%}
+                  <buton type="button" class="btn btn-outline-primary btn-fw">{{reference}}</buton>
+                  {% endfor%}
+                  </div>
+              </div>
+            </div>
+              <div class="col-12 col-xl-8 mb-4 mb-xl-0">
+                <a href="{% url 'topicView' topic.id %}?direction=prev"  class="btn btn-primary"> &lt; Previous</a></div>
+                <div class="col-12 col-xl-4 mb-4">
+                  <div class="justify-content-start d-flex">
+                   <div class="dropdown flex-md-grow-1 flex-xl-grow-0">
+                    <a href="{% url 'topicView' topic.id %}?direction=next"  class="btn btn-primary"> &lt; Next</a></div>
+                   </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-xl-8 mb-4">  </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+        <!-- content-wrapper ends -->
+        <!-- partial:../../partials/_footer.html -->
+        <footer class="footer">
+          <div class="d-sm-flex justify-content-center justify-content-sm-between">
+            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2023. All rights reserved.</span>
+            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">By : Semi tech</span>
+          </div>
+        </footer>
+        <!-- partial -->
+        
+      </div>
+
+
+      
+{% elif topic.order >= 1%}
+
+<div class="main-panel">          
+  <div class="content-wrapper">
+    <div class="row">
+      
+      <div class="col-md-12 grid-margin">
+        <div class="row">
+          
+          <div class="col-12 col-xl-8 mb-4 mb-xl-0">
+            <h3 class="font-weight-bold"><span class="text-primary">{{topic.name}}</span> Tutorial</h3>
+            <h6 class="font-weight-normal mb-0"> <span class="text-primary">3 unread alerts!</h6>
+          </div>
+
+          <div class="col-12 col-xl-4 mb-4">
+           <div class="justify-content-end d-flex">
+            <div class="dropdown flex-md-grow-1 flex-xl-grow-0">
+              <button class="btn btn-sm btn-light bg-white dropdown-toggle" type="button" id="dropdownMenuDate2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+               <i class="mdi mdi-calendar"></i> Today (10 Jan 2021)
+              </button>
+            </div>
+           </div>
+          </div>
+
+          <div class="col-12 col-xl-8 mb-4 mb-xl-0">
+            <a href="{% url 'topicView' topic.id %}?direction=prev"  class="btn btn-primary"> &lt; Home</a>
+          </div>
+            {% comment %} <button type="button" class="btn btn-primary"><a href="#"> &lt; Home</a></button></div> {% endcomment %}
+            <div class="col-12 col-xl-4 mb-4">
+              <div class="justify-content-start d-flex">
+                <div class="dropdown flex-md-grow-1 flex-xl-grow-0">
+                 <a href="{% url 'topicView' topic.id %}?direction=next"  class="btn btn-primary"> &lt; Next</a>
+                {% comment %} <button type="button" class="btn btn-primary">Next &gt;</button></div> {% endcomment %}
+                </div> 
+              </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-xl-8 mb-0">  
+        </div>
+      </div>
+      <div class="col-12 grid-margin stretch-card">
+        <div class="card">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card-body">
+                <h4 class="card-title">Learn{{topsic}}</h4>
+                <p class="card-description">{{topic.descriptions|safe }} </p>
+                <button type="button" class="btn btn-success btn-rounded btn-fw">Start Learning {{topic}} now &gt;&gt;</button>
+                {% comment %} <div class="template-demo">
+                  <button type="button" class="btn btn-secondary">Secondary</button>
+                  <button type="button" class="btn btn-success">Success</button>
+                  <button type="button" class="btn btn-danger">Danger</button>
+                  <button type="button" class="btn btn-warning">Warning</button>
+                  <button type="button" class="btn btn-info">Info</button>
+                  <button type="button" class="btn btn-light">Light</button>
+                  <button type="button" class="btn btn-dark">Dark</button>
+                  <button type="button" class="btn btn-link">Link</button>
+                </div> {% endcomment %}
+              </div>
+              <hr>
+            </div>
+            {% comment %} <div class="col-md-6">
+              <div class="card-body">
+                <h4 class="card-title">Rounded buttons</h4>
+                <p class="card-description">Add class <code>.btn-rounded</code></p>
+                <div class="template-demo">
+                  <button type="button" class="btn btn-primary btn-rounded btn-fw">Primary</button>
+                  <button type="button" class="btn btn-secondary btn-rounded btn-fw">Secondary</button>
+                  <button type="button" class="btn btn-success btn-rounded btn-fw">Success</button>
+                  <button type="button" class="btn btn-danger btn-rounded btn-fw">Danger</button>
+                  <button type="button" class="btn btn-warning btn-rounded btn-fw">Warning</button>
+                  <button type="button" class="btn btn-info btn-rounded btn-fw">Info</button>
+                  <button type="button" class="btn btn-light btn-rounded btn-fw">Light</button>
+                  <button type="button" class="btn btn-dark btn-rounded btn-fw">Dark</button>
+                  <button type="button" class="btn btn-link btn-rounded btn-fw">Link</button>
+                </div>
+              </div>
+            </div> {% endcomment %}
+          </div>
+        </div>
+      </div>
+    
+      {% comment %} Exanples {% endcomment %}
+      <div class="col-12 grid-margin stretch-card">
+        <div class="card">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card-body ">
+                <h4 class="card-title">Examples in Each topics</h4>
+                <p class="card-description">The "Try it Yourself" editor makes it easy to learn {{topic}}. You can edit 
+                  {{topic}} code and view the result in the simulation.</p>
+                <div class="card tale-bg">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="card-body">
+                        <h4 class="card-title">Examples</h4>
+                        <code>&lt;html&gt;&lt;/html&gt;</code> are wrapped as an inline elements.
+<pre>
+              &lt;head&gt;
+                  &lt;title&gt;
+                      GeeksforGeeks Bootstrap Code Example
+                  &lt;/title&gt;
+              &lt;/head&gt;
+</pre>
+  <button type="button" class="btn btn-success btn-rounded btn-fw">Try it Yourself &gt;&gt;</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {% comment %} Reference {% endcomment %}
+      <div class="col-12 grid-margin stretch-card">
+        <div class="card">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card-body">
+                <h4 class="card-title">{{topic}} Reference</h4>
+                <p class="card-description">Some links for additional Reference</p>
+                <div class="template-demo">
+                  {% for reference in topic.resources.all%}
+                  <buton type="button" class="btn btn-outline-primary btn-fw">{{reference}}</buton>
+                  {% endfor%}
+                  </div>
+              </div>
+            </div>
+              <div class="col-12 col-xl-8 mb-4 mb-xl-0">
+                <a href="{% url 'topicView' topic.id %}?direction=next"  class="btn btn-primary"> &lt; Pre</a></div>
+                <div class="col-12 col-xl-4 mb-4">
+                  <div class="justify-content-start d-flex">
+                   <div class="dropdown flex-md-grow-1 flex-xl-grow-0">
+                    <a href="{% url 'topicView' topic.id %}?direction=next"  class="btn btn-primary">Next &gt;</a></div>
+                   </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-xl-8 mb-4">  </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+        <!-- content-wrapper ends -->
+        <!-- partial:../../partials/_footer.html -->
+        <footer class="footer">
+          <div class="d-sm-flex justify-content-center justify-content-sm-between">
+            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2023. All rights reserved.</span>
+            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">By : Semi tech</span>
+          </div>
+        </footer>
+        <!-- partial -->
+        
+      </div>
+
+
+      
+
+
+{%endif%}
+
+
+{% endblock%}

@@ -31,23 +31,25 @@ class EditCourseForm(forms.ModelForm):
 class EditSubTopicForm(forms.ModelForm):
     class Meta:
         model = Topic
-        fields = ('name', 'course','resources','order')
+        fields = ('name', 'course','resources','descriptions','order')
 
     name = forms.CharField( widget=forms.TextInput(attrs={'class': 'form-control form-control-sm','placeholder': 'Course Title or Name'}))
     order = forms.IntegerField( widget=forms.NumberInput(attrs={'class': 'form-control form-control-sm','placeholder': 'Order Number For The Sub topic'}))
     resources = forms.ModelMultipleChoiceField(queryset=Resource.objects.all(), widget=forms.SelectMultiple(attrs={'class': 'form-control form-control-sm'}),required=False)
     course = forms.ModelChoiceField(queryset=Course.objects.all(), widget=forms.Select(attrs={'class': 'form-control form-control-sm'}))
-
+    # descriptions = forms.CharField(max_length=200, label="",widget=forms.Textarea(attrs={'class': 'form-control form-control-sm ','placeholder':'Descriptions'}))
+  
 
 class SubTopicForm(forms.ModelForm):
     class Meta:
         model = Topic
-        fields = ('name', 'resources','order',)
+        fields = ('name', 'resources','descriptions','order')
 
     name = forms.CharField( widget=forms.TextInput(attrs={'class': 'form-control form-control-sm','placeholder': 'Course Title or Name'}))
     order = forms.IntegerField( widget=forms.NumberInput(attrs={'class': 'form-control form-control-sm','placeholder': 'Order Number For The Sub topic'}))
     resources = forms.ModelMultipleChoiceField(queryset=Resource.objects.all(), widget=forms.SelectMultiple(attrs={'class': 'form-control form-control-sm'}),required=False)
-    
+    # descriptions = forms.CharField(max_length=200, label="",widget=forms.Textarea(attrs={'class': 'form-control form-control-sm ','placeholder':'Descriptions'}))
+  
 
 class ResourceForm(forms.ModelForm):
     class Meta:
@@ -55,17 +57,18 @@ class ResourceForm(forms.ModelForm):
         fields = ('name', 'content','resource_type','file','url')
 
     name = forms.CharField( widget=forms.TextInput(attrs={'class': 'form-control form-control-sm','placeholder': 'Course Title or Name'}))
-    content = forms.CharField(max_length=200, label="",widget=forms.Textarea(attrs={'class': 'form-control form-control-sm ','placeholder':'content'}))  
-    resource_type = forms.ChoiceField(choices=Resource.RESOURCE_TYPE_CHOICES, widget=forms.Select(attrs={'class': 'form-control form-control-sm ','placeholder': 'Choose Difficulty'}))
-    url = forms.CharField(max_length=200, label="",widget=forms.TextInput(attrs={'class': 'form-control form-control-sm ','placeholder':'UrlS'}))  
-    file = forms.FileField(widget=forms.ClearableFileInput(attrs={'class': 'custom-file-input'})) 
+    content = forms.CharField(max_length=200, label="c",widget=forms.Textarea(attrs={'class': 'form-control form-control-sm ','placeholder':'content'}))  
+    resource_type = forms.ChoiceField(label="r",choices=Resource.RESOURCE_TYPE_CHOICES, widget=forms.Select(attrs={'class': 'form-control form-control-sm ','placeholder': 'Choose Difficulty'}))
+    url = forms.CharField(max_length=200, label="u",widget=forms.TextInput(attrs={'class': 'form-control form-control-sm ','placeholder':'UrlS'}))  
+    file = forms.FileField(label="f",widget=forms.ClearableFileInput(attrs={'class': ''}),required=True) 
     
 class EditResourceForm(forms.ModelForm):
     class Meta:
         model = Course
-        fields = ('name', 'content','resource_type','url')
+        fields = ('name', 'content','resource_type','file','url')
     name = forms.CharField( widget=forms.TextInput(attrs={'class': 'form-control form-control-sm','placeholder': 'Course Title or Name'}))
     content = forms.CharField(max_length=200, label="",widget=forms.Textarea(attrs={'class': 'form-control form-control-sm ','placeholder':'content'}))  
     resource_type = forms.ChoiceField(choices=Resource.RESOURCE_TYPE_CHOICES, widget=forms.Select(attrs={'class': 'form-control form-control-sm ','placeholder': 'Choose Difficulty'}))
     url = forms.CharField(max_length=200, label="",widget=forms.TextInput(attrs={'class': 'form-control form-control-sm ','placeholder':'UrlS'}))  
-  
+    file = forms.FileField(widget=forms.ClearableFileInput(attrs={'class': 'form-control form-control-sm custom-file-input'})) 
+    

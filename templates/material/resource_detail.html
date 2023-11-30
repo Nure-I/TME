@@ -38,7 +38,7 @@
 
            
               <div class="col-md-8 mb-4 transparent">
-                <form method="post">
+                <form method="post" enctype="multipart/form-data">
                   {% csrf_token %}
                   <input type="hidden" name="form_identifier" value="ResourceForm">
                   {{ form.as_p }}

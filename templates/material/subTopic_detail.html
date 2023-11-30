@@ -41,6 +41,7 @@
                 <form method="post">
                   {% csrf_token %}
                   <input type="hidden" name="next" value="{{ request.path }}">
+                  {{form.media}}
                   {% for field in form %}
           {# Render each form field individually #}
           {{ field.label_tag }} {{ field }} {{ field.help_text }}
@@ -148,7 +149,7 @@
       </div>
       <div class="modal-body">
         <!-- Include a form for adding a new resource -->
-        <form method="post" action="{% url 'createResource' %}">
+        <form method="post" action="{% url 'createResource' %}" enctype="multipart/form-data">
           {% csrf_token %}
           {{ rform.as_p }}
           <input type="hidden" name="course" value="{{course.id}}">

@@ -1,5 +1,5 @@
 from django.urls import reverse
-from django.shortcuts import render , redirect
+from django.shortcuts import render , redirect , get_object_or_404
 from django.contrib import messages
 from .forms import CourseForm , EditCourseForm, SubTopicForm, ResourceForm, EditResourceForm, EditSubTopicForm
 from .models import Course, Topic , Resource
@@ -114,8 +114,9 @@ def createResource(request):
   form = ResourceForm()
   if request.method == 'POST':
    
-      form = ResourceForm(request.POST)
+      form = ResourceForm(request.POST, request.FILES)
       if form.is_valid():
+          print("ssssss")
           name = form.cleaned_data.get('name')
           resource_type = form.cleaned_data.get('resource_type')
           url = form.cleaned_data.get('url')
@@ -135,7 +136,9 @@ def createResource(request):
       else:
           for field, errors in form.errors.items():
               for error in errors:
-                  messages.warning(request, f'{error}')
+                  field_label = form.fields[field].label if field in form.fields else field
+                  print(field_label)
+                  messages.warning(request, f'{field_label}: {error}')
           cId = request.POST.get('course')
           redirect_url = reverse('courseDetail', kwargs={'courseId': cId})
           url = request.POST.get('next', '/')
@@ -158,7 +161,7 @@ def resourceDetail(request,resourceId):
  # course = Course.objects.prefetch_related('resources').get(id= courseId)
   resource = Resource.objects.get(id= resourceId)
   if request.method == 'POST':
-      form = EditResourceForm(request.POST, instance=resource)
+      form = EditResourceForm(request.POST, request.FILES,instance=resource)
       if form.is_valid():
           form.save()
           name = form.cleaned_data.get('name')
@@ -206,7 +209,6 @@ def subTopicDetail(request,subTopicId):
     form = EditSubTopicForm(instance= topic)
     rform = ResourceForm()
   course = Course.objects.get(id= topic.course.id)
-  print(course)
   context = {'form':form,'topic': topic,'rform':rform,'course':course} 
   return render(request,'material/subTopic_detail.html',context)
 
@@ -219,3 +221,63 @@ def removeSubTopic(request,subTopicId):
   topic.delete()
   messages.success(request, f'You have successfully Removed {topic.name} Topic.')
   return redirect('courseDetail', courseId=course.id) 
+
+
+def courseView (request,courseId):
+  page = 'topic'
+  # if order:
+  #   topic = Topic.objects.get(course__id = courseId, order = order)
+  # else:
+  print(courseId)
+  
+  topic = get_object_or_404(Topic, course__id = courseId, order = 1 )
+  # topic = Topic.objects.get(course__id = courseId, order = 1)
+  topics = Topic.objects.filter(course__id = courseId)
+  course = Course.objects.get(id= courseId)
+  context = {'topics':topics,'course': course,'topic':topic, 'page':page} 
+  return render(request,'users/topic_view.html',context)
+
+def topicView (request,topicId):
+  page= 'topic'
+  topic = Topic.objects.get(id = topicId)
+  order = topic.order
+  course = topic.course
+  topics = Topic.objects.filter(course= course)
+  direction = request.GET.get('direction')
+  if direction:
+    if direction == 'prev':
+      order-=1
+      while True:
+          topic_exists = Topic.objects.filter(course=course, order=order).exists()
+
+          if topic_exists:
+              # The topic exists
+              topic = get_object_or_404(Topic, course=course, order=order)
+              # topic = Topic.objects.get(course= course, order= order)
+              break  
+          else:
+              order-=1
+    elif direction == 'next':
+      order+=1
+      while True:
+          topic_exists = Topic.objects.filter(course=course, order=order).exists()
+
+          if topic_exists:
+              # The topic exists
+              topic = get_object_or_404(Topic, course=course, order=order)
+              # topic = Topic.objects.get(course= course, order= order)
+              break  
+          else:
+              order+=1
+  context = {'topic':topic, 'topics':topics,'page':page } 
+  return render(request,'users/topic_view.html',context)
+
+
+
+
+def index(request):
+  page='index'
+  context= {
+    'page':page
+  }
+  return render(request,'users/topic_view.html',context)

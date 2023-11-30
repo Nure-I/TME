@@ -1,52 +1,82 @@
-{% load static %}
-
+{% load static %} {% if request.user.is_superuser %}
 <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
-  <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-    <a class="navbar-brand brand-logo mr-5" href="index.html"><img src="{% static 'img/andelus-logo1.png '%}" class="mr-2" alt="logo"/></a>
-    <a class="navbar-brand brand-logo-mini" href="index.html"><img src="{% static 'img/andelus-logo1.png '%}" alt="logo"/></a>
+  <div
+    class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center"
+  >
+    <a class="navbar-brand brand-logo mr-5" href="{% url 'index' %}"
+      ><img src="{% static 'img/andelus-logo1.png '%}" class="mr-2" alt="logo"
+    /></a>
+    <a class="navbar-brand brand-logo-mini" href="{% url 'index' %}"
+      ><img src="{% static 'img/andelus-logo1.png '%}" alt="logo"
+    /></a>
   </div>
-  <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
-    <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+  <div
+    class="navbar-menu-wrapper d-flex align-items-center justify-content-end"
+  >
+    <button
+      class="navbar-toggler navbar-toggler align-self-center"
+      type="button"
+      data-toggle="minimize"
+    >
       <span class="icon-menu"></span>
     </button>
     <ul class="navbar-nav mr-lg-2">
       <li class="nav-item nav-search">
-        {% comment %} <form method="GET" action="{% url 'search' %}"> {% endcomment %}
-          <form method="GET" action="">
-        <div class="input-group">
-          <div class="input-group-prepend hover-cursor" id="navbar-search-icon">
-            <input type="text"  name="q" class="form-control" id="navbar-search-input" placeholder="Search" aria-label="search" aria-describedby="search">
-            <button class="btn" type="submit">
-            <span class="input-group-text" id="search">
-              <i class="icon-search"></i>
-            </span>
-          </button>
-        </div>
-      </div>
-    </form>
+        <form method="GET" action="">
+          <div class="input-group">
+            <div
+              class="input-group-prepend hover-cursor"
+              id="navbar-search-icon"
+            >
+              <input
+                type="text"
+                name="q"
+                class="form-control"
+                id="navbar-search-input"
+                placeholder="Search"
+                aria-label="search"
+                aria-describedby="search"
+              />
+              <button class="btn" type="submit">
+                <span class="input-group-text" id="search"
+                  ><i class="icon-search"></i
+                ></span>
+              </button>
+            </div>
+          </div>
+        </form>
       </li>
     </ul>
-   
+
     <ul class="navbar-nav navbar-nav-right">
       <li class="nav-item dropdown">
-        {% comment %} <a class="nav-link count-indicator dropdown-toggle"  href="{% url 'lists' %}"> {% endcomment %}
-        <a class="nav-link count-indicator dropdown-toggle"  href="">
-          <i class="icon-paper mx-0"></i>
-          <span class="count"></span>
-          
-        </a>
-       
+        <a class="nav-link count-indicator dropdown-toggle" href=""
+          ><i class="icon-paper mx-0"></i><span class="count"></span
+        ></a>
+      </li>
+      <li class="nav-item dropdown">
+        <button type="button" class="btn btn-info btn-rounded btn-fw">
+          Info
+        </button>
       </li>
       <li class="nav-item nav-profile dropdown">
-        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-          <img src="{% static 'img/user.png '%}" alt="profile"/>
+        <a
+          class="nav-link dropdown-toggle"
+          href="#"
+          data-toggle="dropdown"
+          id="profileDropdown"
+        >
+          <img src="{% static 'img/user.png '%}" alt="profile" />
         </a>
-        <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
+        <div
+          class="dropdown-menu dropdown-menu-right navbar-dropdown"
+          aria-labelledby="profileDropdown"
+        >
           <a class="dropdown-item" href="{% url 'profile'%}">
             <i class="ti-settings text-primary"></i>
             Profile
           </a>
-         
+
           {% if user.is_authenticated %}
           <a class="dropdown-item" href="{% url 'logOut' %}">
             <i class="ti-power-off text-primary"></i>
@@ -55,7 +85,7 @@
           {% else %}
           <a class="dropdown-item" href="{% url 'logIn' %}">
             <i class="ti-power-off text-primary"></i>
-            Login 
+            Login
           </a>
           {% endif %}
         </div>
@@ -66,8 +96,121 @@
         </a>
       </li>
     </ul>
-    <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+    <button
+      class="navbar-toggler navbar-toggler-right d-lg-none align-self-center"
+      type="button"
+      data-toggle="offcanvas"
+    >
       <span class="icon-menu"></span>
     </button>
   </div>
 </nav>
+
+{%else%}
+
+<nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-column">
+  <div class="navbar col-lg-12 col-12 p-0 d-flex flex-row">
+    <div
+      class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center"
+    >
+      <a class="navbar-brand brand-logo mr-5" href="{% url 'index' %}"
+        ><img
+          src="{% static 'img/andelus-logo1.png '%}"
+          class="mr-2"
+          alt="logo"
+      /></a>
+      <a class="navbar-brand brand-logo-mini" href="{% url 'index' %}"
+        ><img src="{% static 'img/andelus-logo1.png '%}" alt="logo"
+      /></a>
+    </div>
+    <div
+      class="navbar-menu-wrapper d-flex align-items-center justify-content-end"
+    >
+      <button
+        class="navbar-toggler navbar-toggler align-self-center"
+        type="button"
+        data-toggle="minimize"
+      >
+        <span class="icon-menu"></span>
+      </button>
+      <ul class="navbar-nav mr-lg-2">
+        <li class="nav-item nav-profile dropdown">
+          &nbsp;
+          <a
+            class="btn btn-outline-primary btn-icon-text"
+            href="#"
+            data-toggle="dropdown"
+            id="profileDropdown"
+          >
+            Menu
+          </a>
+
+          <div
+            class="dropdown-menu dropdown-menu-right navbar-dropdown"
+            aria-labelledby="profileDropdown"
+          >
+            <a class="dropdown-item" href="{% url 'profile'%}">
+              <i class="ti-settings text-primary"></i>
+              Profile
+            </a>
+
+            {% if user.is_authenticated %}
+            <a class="dropdown-item" href="{% url 'logOut' %}">
+              <i class="ti-power-off text-primary"></i>
+              Logout
+            </a>
+            {% else %}
+            <a class="dropdown-item" href="{% url 'logIn' %}">
+              <i class="ti-power-off text-primary"></i>
+              Login
+            </a>
+            {% endif %}
+          </div>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav navbar-nav-right">
+        <li class="nav-item dropdown">
+          {% if user.is_authenticated %}
+          <a
+            class="dropdown-item btn btn-primary btn-rounded btn-fw"
+            href="{% url 'logIn' %}"
+          >
+            <i class="ti-power-off text-primary"></i>
+            {{user}}|Log out
+          </a>
+          {% else %}
+          <a
+            class="btn btn-primary btn-rounded btn-fw"
+            href="{% url 'logIn' %}"
+          >
+            Sign Up / Log in
+          </a>
+          {% endif %}
+        </li>
+
+        <li class="nav-item nav-settings d-none d-lg-flex">
+          <a class="nav-link" href="#">
+            <i class="icon-ellipsis"></i>
+          </a>
+        </li>
+      </ul>
+      <button
+        class="navbar-toggler navbar-toggler-right d-lg-none align-self-center"
+        type="button"
+        data-toggle="offcanvas"
+      >
+        <span class="icon-menu"></span>
+      </button>
+    </div>
+  </div>
+  <div class="scrollmenu col-lg-12 col-12 p-0 d-flex flex-row">
+    {% for course in courses %}
+    <a href="{% url 'courseView' course.id %}?courseId={{ course.id }}">
+      {{ course }}</a
+    >
+    {% endfor %}
+  </div>
+</nav>
+
+{%endif%}

@@ -5,6 +5,8 @@ from django.contrib.auth import views as auth_views
 urlpatterns = [
    # path('create_user', views.create_user, name='create_user'),
    # path('directors', views.directors, name='directors'),
+    path('', views.index, name='index'),
+
     path('createCourse', views.createCourse, name='createCourse'),
     path('courseList', views.courseList, name='courseList'),
     path('courseDetail/<int:courseId>/', views.courseDetail, name='courseDetail'),
@@ -16,8 +18,10 @@ urlpatterns = [
     path('removeResource/<int:resourceId>/', views.removeResource, name='removeResource'),
 
 
-    path('subTopicDetail/<int:subTopicId>/', views.subTopicDetail, name='subTopicDetail'),
-    path('removeSubTopic/<int:subTopicId>/', views.removeSubTopic, name='removeSubTopic'),
+      path('subTopicDetail/<int:subTopicId>/', views.subTopicDetail, name='subTopicDetail'),
+      path('removeSubTopic/<int:subTopicId>/', views.removeSubTopic, name='removeSubTopic'),
    # path('confirm/<int:request_id>/', views.confirm_requests, name='confirm_requests'),
    # path('approve/<int:request_id>/', views.approve_requests, name='approve_requests'),
+      path('courseView/<int:courseId>/', views.courseView, name='courseView'),
+      path('topicView/<int:topicId>/', views.topicView, name='topicView'),
 ]

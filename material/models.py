@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from ckeditor.fields import RichTextField
 # Create your models here.
 
 class Course(models.Model):
@@ -10,7 +11,7 @@ class Course(models.Model):
     ]
 
     name = models.CharField(max_length=100)
-    description = models.TextField()
+    description = models.TextField(max_length= 10000)
     rating = models.FloatField(default=0.0)
     difficulty_level = models.CharField(max_length=20, choices=DIFFICULTY_CHOICES)
     prerequisites = models.ManyToManyField('self', symmetrical=False, blank=True)
@@ -49,10 +50,11 @@ class Topic(models.Model):
     course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name='topics')
     resources = models.ManyToManyField(Resource, related_name='topics')
     order = models.PositiveIntegerField(default = 0)
+    descriptions = RichTextField(blank=True,null=True)
     # Other fields as needed
 
     def __str__(self):
-        return self.name
+        return self.course.name
 
 class Review(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)

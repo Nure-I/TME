@@ -231,9 +231,10 @@
           <input type="hidden" name="form_identifier" value="subtopicForm">
           {% for field in sform %}
           {# Render each form field individually #}
+          {{sform.media}}
           {{ field.label_tag }} {{ field }} {{ field.help_text }}
           {% if field.name == 'resources' %}
-            <a href="#" data-toggle="modal" data-target="#addResourceModal">Add New Resource</a>
+            <a href="#" data-toggle="modal" data-target="#addResourceModal">Addss New Resource</a>
           {% endif %}
         {% endfor %}
           <div class="mt-4">
@@ -297,7 +298,7 @@
       </div>
       <div class="modal-body">
         <!-- Include a form for adding a new resource -->
-        <form method="post" action="{% url 'createResource' %}">
+        <form method="post" action="{% url 'createResource' %}" enctype="multipart/form-data">
           {% csrf_token %}
           {{ rform.as_p }}
           <input type="hidden" name="course" value="{{course.id}}">

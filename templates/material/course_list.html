@@ -33,7 +33,7 @@
                         <tr>
                           <td>{{ forloop.counter }}</td>
                           <td>{{ course }}</td>
-                          <td>{{ course.description }}</td>
+                          <td>{{ course.description|safe }}</td>
                           <td>
                             <label class="badge badge-info"
                               >{{ course.difficulty_level.upper }}</label
