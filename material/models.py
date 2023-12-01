@@ -51,7 +51,6 @@ class Topic(models.Model):
     resources = models.ManyToManyField(Resource, related_name='topics')
     order = models.PositiveIntegerField(default = 0)
     descriptions = RichTextField(blank=True,null=True)
-    # Other fields as needed
 
     def __str__(self):
         return self.course.name
@@ -71,5 +70,11 @@ class Feedback(models.Model):
 class Tag(models.Model):
     name = models.CharField(max_length=50)
 
+    def __str__(self):
+        return self.name
+
+class Project(models.Model):
+    name = models.CharField(max_length=100)
+    descriptions = RichTextField(blank=True,null=True)
     def __str__(self):
         return self.name
