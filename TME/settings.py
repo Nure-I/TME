@@ -82,6 +82,9 @@ WSGI_APPLICATION = 'TME.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+CSRF_TRUSTED_ORIGINS = ['https://tmearduino.up.railway.app','http://127.0.0.1']
+
+
 DATABASES = {
     # 'default': {
     #     'ENGINE': 'django.db.backends.sqlite3',
