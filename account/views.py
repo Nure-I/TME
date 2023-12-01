@@ -3,26 +3,41 @@ from django.shortcuts import render, redirect
 from django.contrib import messages, auth
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, UserChangeForm, PasswordChangeForm
-from .forms import RegisterForm 
+from .forms import RegisterForm , ProfileForm
+from material.forms import FeedbackForm
 from django.contrib.auth.models import User
-from material.models import Course,Resource,Topic
+from material.models import Course,Resource,Topic,Feedback
+from .models import Profile
 # Create your views here.
 
 
 def index(request):
+    form = FeedbackForm()
     course = Course.objects.count()
     resource = Resource.objects.count()
     topic = Topic.objects.count()
-    context  ={ 'course':course,'resource':resource,'topic':topic}
+    users = Profile.objects.count()
+    if request.method == 'POST':
+        form = FeedbackForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, f'Thank you for Your Time And Comments.')
+            return redirect('index')
+    context  ={ 'course':course,'resource':resource,'topic':topic,'users':users, 'fform':form}
     return render(request,'index.html',context)
 
 def register(request):
     page = 'register'
     form = RegisterForm()
+    pform = ProfileForm()
     if request.method == 'POST':
         form = RegisterForm(request.POST)
-        if form.is_valid():
-            form.save()
+        pform = ProfileForm(request.POST)
+        if form.is_valid() and pform.is_valid():
+            user = form.save()
+            profile = pform.save(commit=False)
+            profile.user = user
+            profile.save()
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password1')
             user = authenticate(request, username=username, password=password)
@@ -36,7 +51,7 @@ def register(request):
    
        
 
-    return render(request, 'account/log_in.html', {'rform': form,'page':page})
+    return render(request, 'account/log_in.html', {'rform': form,'page':page,'pform':pform})
 
 
 # @login_required
@@ -79,4 +94,17 @@ def editProfile(request):
 def logOut(request):
     auth.logout(request)
     messages.success(request, 'You are now logged out')
-    return redirect('logIn')
+    return redirect('index')
+
+@login_required(login_url='logIn')
+def userList(request):
+    users = Profile.objects.filter(user__is_superuser=False)
+    context  ={ 'users':users}
+    return render(request,'account/list_of_users.html',context)
+
+
+@login_required(login_url='logIn')
+def feedBack(request):
+    feedbacks = Feedback.objects.all()
+    context  ={ 'feedbacks':feedbacks}
+    return render(request,'account/feedback.html',context)

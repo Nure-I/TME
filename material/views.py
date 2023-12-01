@@ -275,9 +275,9 @@ def topicView (request,topicId):
 
 
 
-def index(request):
-  page='index'
-  context= {
-    'page':page
-  }
-  return render(request,'users/topic_view.html',context)
+# def index(request):
+#   page='index'
+#   context= {
+#     'page':page
+#   }
+#   return render(request,'users/topic_view.html',context)

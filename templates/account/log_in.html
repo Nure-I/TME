@@ -43,24 +43,29 @@
             <div class="col-lg-4 mx-auto">
               <div class="auth-form-light text-center py-5 px-4 px-sm-5">
                 <div class="brand-logo">
-                  <img src="{% static 'img/ande.png '%}" />
+                  <img src="{% static 'img/ar.png '%}" />
                 </div>
                 {% if page == 'register'%}
-                <h4>Hello , Welcome To TME EDucation</h4>
+                <h4>Hello , Welcome Arduino Tutorial</h4>
                 <h6 class="font-weight-light">Regster to continue</h6>
                 <hr>
                 <form method="post" action="{% url 'register' %}">
                   {% csrf_token %}
                   {{ rform.as_p }}
+                  {{ pform.as_p }}
                   <div class="mt-3">
                     <button
                     class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn"
                     type="submit"
                     >Register</button>
+                    <a href="{% url 'logIn' %}"
+                    class="btn btn-block btn-success btn-lg font-weight-medium auth-form-btn"
+                    type="submit"
+                    >Login</a>
                   </div>
                 </form>
                 {%else%}
-                <h4>Hello , Welcome To TME EDucation</h4>
+                <h4>Hello , Welcome Arduino Tutorial</h4>
                 <h6 class="font-weight-light">Sign in to continue</h6>
                 <form class="pt-3" method="POST" >
                   {% csrf_token %}

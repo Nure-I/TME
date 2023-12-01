@@ -1,45 +1,18 @@
 {% extends 'base.html'%} {% load static %} {% block content %}
 <!-- partial -->
-<div class="main-panel">
+<div class="container">
   <div class="content-wrapper">
+    {% if user.is_authenticated and request.user.is_superuser%}
     <div class="row">
       <div class="col-md-12 grid-margin">
         <div class="row">
           <div class="col-12 col-xl-8 mb-4 mb-xl-0">
             <h3 class="font-weight-bold">Welcome {{user}}</h3>
-            <h6 class="font-weight-normal mb-0">
-              All systems are running smoothly! You have
-              <span class="text-primary">3 unread alerts!</span>
-            </h6>
+            <h3 class="font-weight-bold">
+            </h3>
+          
           </div>
-          <div class="col-12 col-xl-4">
-            <div class="justify-content-end d-flex">
-              <div class="dropdown flex-md-grow-1 flex-xl-grow-0">
-                <button
-                  class="btn btn-sm btn-light bg-white dropdown-toggle"
-                  type="button"
-                  id="dropdownMenuDate2"
-                  data-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="true"
-                >
-                  <i class="mdi mdi-calendar"></i> Today ({% now "jS F Y H:i"
-                  %})
-                </button>
-                {% comment %}
-                <div
-                  class="dropdown-menu dropdown-menu-right"
-                  aria-labelledby="dropdownMenuDate2"
-                >
-                  <a class="dropdown-item" href="#">January - March</a>
-                  <a class="dropdown-item" href="#">March - June</a>
-                  <a class="dropdown-item" href="#">June - August</a>
-                  <a class="dropdown-item" href="#">August - November</a>
-                </div>
-                {% endcomment %}
-              </div>
-            </div>
-          </div>
+       
         </div>
       </div>
     </div>
@@ -47,11 +20,11 @@
       <div class="col-md-6 grid-margin stretch-card">
         <div class="card tale-bg">
           <div class="card-people mt-auto">
-            <img src="{% static 'img/user.png '%}" alt="people" />
+            <img src="https://willdom.com/wp-content/uploads/2023/06/arduino-projects.webp" alt="people" />
             <div class="weather-info">
               <div class="d-flex">
                 <div class="ml-2">
-                  <h4 class="location font-weight-normal">TME</h4>
+                  <h4 class="location font-weight-normal">Along With TME</h4>
                   <h6 class="font-weight-normal">Education</h6>
                 </div>
               </div>
@@ -66,6 +39,136 @@
               <div class="card-body">
                 <p class="mb-4">Total Number fo Course</p>
                 <p class="fs-30 mb-2">{{course}}</p>
+              
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 mb-4 stretch-card transparent">
+            <div class="card card-dark-blue">
+              <div class="card-body">
+                <p class="mb-4">Number of viewed Courses</p>
+                <p class="fs-30 mb-2">{{resource}}</p>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 mb-4 mb-lg-0 stretch-card transparent">
+            <div class="card card-light-blue">
+              <div class="card-body">
+                <p class="mb-4">Number of Downloaded Resources</p>
+                <p class="fs-30 mb-2">0</p>
+               
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 stretch-card transparent">
+            <div class="card card-light-danger">
+              <div class="card-body">
+                <p class="mb-4">Number of Users</p>
+                <p class="fs-30 mb-2">{{users}}</p>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- content-wrapper ends -->
+      <!-- partial:partials/_footer.html -->
+    </div>
+    
+    {%else%}
+
+    <div class="row">
+      <div class="col-md-12 grid-margin">
+        <div class="row">
+          <div class="col-12 col-xl-8 mb-4 mb-xl-0">
+            <h3 class="font-weight-bold">Welcome to Arduino Tutorials Hub!</h3>
+            <h3 class="font-weight-bold">
+              <span class="text-primary">
+                Learn, Create, and Innovate with Arduino</span
+              >
+            </h3>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-people mt-auto">
+            <img
+              src="https://willdom.com/wp-content/uploads/2023/06/arduino-projects.webp"
+              alt="people"
+            />
+            <div class="weather-info">
+              <div class="d-flex">
+                <div class="ml-2">
+                  <h4 class="location font-weight-bold text-primary">
+                    Along With TME
+                  </h4>
+                  <h6 class="font-weight-normal text-primary">Education</h6>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- content-wrapper ends -->
+      <!-- partial:partials/_footer.html -->
+    </div>
+    <hr />
+    <div class="row">
+      <div class="col-md-12 grid-margin">
+        <div class="row justify-content-center">
+          <div class="col-12 col-xl-8 mb-4 mb-xl-0">
+            <h3 class="font-weight-bold">Start Your Arduino Journey Today!</h3>
+            <h6 class="font-weight-normal mb-0">
+              🚀 Begin your Arduino adventure and Join our community and share
+              your projects with #TME Education ArduinoTutorials.
+            </h6>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr />
+    <div class="row justify-content-center">
+      <div class="col-md-9 grid-margin stretch-card">
+        <div class="card tale-bg">
+          <div class="card-people mt-auto text-center">
+            <img src="{% static 'img/img.jpg '%}" alt="project" />
+          </div>
+        </div>
+      </div>
+      <!-- content-wrapper ends -->
+      <!-- partial:partials/_footer.html -->
+    </div>
+    <hr />
+    <div class="row">
+      <div class="col-md-12 grid-margin">
+        <div class="row text-center">
+          <div class="col-12 col-xl-8 mb-4 mb-xl-0">
+            <h3 class="font-weight-bold">Exciting Project-Based Tutorials</h3>
+            <h3 class="font-weight-bold">
+              <span class="text-primary"> With Every Steps and Outcome</span>
+            </h3>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12 grid-margin transparent">
+        <div class="row">
+          <div class="col-md-6 mb-4 stretch-card transparent">
+            <div class="card card-tale">
+              <div class="card-body">
+                <p class="mb-4">Project Name</p>
+                <p class="fs-30 mb-2">{{course}}</p>
                 <p>10.00% (30 days)</p>
               </div>
             </div>
@@ -73,7 +176,7 @@
           <div class="col-md-6 mb-4 stretch-card transparent">
             <div class="card card-dark-blue">
               <div class="card-body">
-                <p class="mb-4">Total Resources</p>
+                <p class="mb-4">Project Name</p>
                 <p class="fs-30 mb-2">{{resource}}</p>
                 <p>22.00% (30 days)</p>
               </div>
@@ -84,7 +187,7 @@
           <div class="col-md-6 mb-4 mb-lg-0 stretch-card transparent">
             <div class="card card-light-blue">
               <div class="card-body">
-                <p class="mb-4">Number of Downloaded Resources</p>
+                <p class="mb-4">Project Name</p>
                 <p class="fs-30 mb-2">34040</p>
                 <p>2.00% (30 days)</p>
               </div>
@@ -93,7 +196,7 @@
           <div class="col-md-6 stretch-card transparent">
             <div class="card card-light-danger">
               <div class="card-body">
-                <p class="mb-4">Number of Clients</p>
+                <p class="mb-4">Project Name</p>
                 <p class="fs-30 mb-2">47033</p>
                 <p>0.22% (30 days)</p>
               </div>
@@ -101,23 +204,59 @@
           </div>
         </div>
       </div>
+      <hr />
+      <div class="container" id="Feedback">
+        <div class="container-fluid page-body-wrapper full-page-wrapper">
+          <div class="content-wrapper d-flex align-items-center auth px-0">
+            <div class="row w-100 mx-0">
+              <div class="col-lg-12 mx-auto">
+                <div class="auth-form-light text-center py-5 px-4 px-sm-5">
+                  <div class="brand-logo">
+                    <img src="{% static 'img/ar.png '%}" />
+                  </div>
+
+                  <h4>Feedback / Contact Us</h4>
+
+                  <form method="post">
+                    {% csrf_token %} {{ fform.as_p }}
+
+                    <div class="mt-3">
+                      <button
+                        class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn"
+                        type="submit"
+                      >
+                        Sumbit
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- content-wrapper ends -->
+        </div>
+        <!-- page-body-wrapper ends -->
+      </div>
 
       <!-- content-wrapper ends -->
       <!-- partial:partials/_footer.html -->
     </div>
-    <footer class="footer">
-      <div class="d-sm-flex justify-content-center justify-content-sm-between">
-        <span
-          class="text-muted text-center text-sm-left d-block d-sm-inline-block"
-          >Copyright © 2023. TME Education .</span
-        >
-        <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"
-          >MAde By <i class="ti-heart text-danger ml-1">Nahom</i></span
-        >
-      </div>
-    </footer>
-    <!-- partial -->
+
+    {%endif%}
+    <hr />
   </div>
+  <footer class="footer">
+    <div class="d-sm-flex justify-content-center justify-content-sm-between">
+      <span
+        class="text-muted text-center text-sm-left d-block d-sm-inline-block"
+        >Copyright © 2023.</span
+      >
+      <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"
+        >MAde By: SemiTech
+      </span>
+    </div>
+  </footer>
+  <!-- partial -->
   <!-- main-panel ends -->
 
   {% endblock%}

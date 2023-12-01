@@ -1,5 +1,5 @@
 from django import forms
-from .models import Course, Resource, Tag, Review, Topic
+from .models import Course, Resource, Tag, Review, Topic, Feedback
 
 class CourseForm(forms.ModelForm):
     name = forms.CharField(label="", widget=forms.TextInput(attrs={'class': 'form-control form-control-sm','placeholder': 'Course Title or Name'}))
@@ -57,10 +57,10 @@ class ResourceForm(forms.ModelForm):
         fields = ('name', 'content','resource_type','file','url')
 
     name = forms.CharField( widget=forms.TextInput(attrs={'class': 'form-control form-control-sm','placeholder': 'Course Title or Name'}))
-    content = forms.CharField(max_length=200, label="c",widget=forms.Textarea(attrs={'class': 'form-control form-control-sm ','placeholder':'content'}))  
-    resource_type = forms.ChoiceField(label="r",choices=Resource.RESOURCE_TYPE_CHOICES, widget=forms.Select(attrs={'class': 'form-control form-control-sm ','placeholder': 'Choose Difficulty'}))
-    url = forms.CharField(max_length=200, label="u",widget=forms.TextInput(attrs={'class': 'form-control form-control-sm ','placeholder':'UrlS'}))  
-    file = forms.FileField(label="f",widget=forms.ClearableFileInput(attrs={'class': ''}),required=True) 
+    content = forms.CharField(max_length=200, label="",widget=forms.Textarea(attrs={'class': 'form-control form-control-sm ','placeholder':'content'}))  
+    resource_type = forms.ChoiceField(label="",choices=Resource.RESOURCE_TYPE_CHOICES, widget=forms.Select(attrs={'class': 'form-control form-control-sm ','placeholder': 'Choose Difficulty'}))
+    url = forms.CharField(max_length=200, label="",widget=forms.TextInput(attrs={'class': 'form-control form-control-sm ','placeholder':'UrlS'}))  
+    file = forms.FileField(label="",widget=forms.ClearableFileInput(attrs={'class': ''}),required=True) 
     
 class EditResourceForm(forms.ModelForm):
     class Meta:
@@ -72,3 +72,13 @@ class EditResourceForm(forms.ModelForm):
     url = forms.CharField(max_length=200, label="",widget=forms.TextInput(attrs={'class': 'form-control form-control-sm ','placeholder':'UrlS'}))  
     file = forms.FileField(widget=forms.ClearableFileInput(attrs={'class': 'form-control form-control-sm custom-file-input'})) 
     
+
+class FeedbackForm(forms.ModelForm):
+    first_name = forms.CharField(label="", widget=forms.TextInput(attrs={'class': 'form-control form-control-sm','placeholder': 'Your Name'}))
+    email = forms.EmailField(max_length=200, label="", widget=forms.EmailInput(attrs={'class': 'form-control form-control-sm', 'placeholder': 'Enter your email'}))
+    message = forms.CharField(max_length=200, label="",widget=forms.Textarea(attrs={'class': 'form-control form-control-sm ','placeholder':'Yor Message here'}))  
+    
+    class Meta:
+        model = Feedback
+        fields = ('first_name', 'email',  'message')
+

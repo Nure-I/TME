@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserChangeForm, UserCreationForm
-
+from .models import Profile
 
 class LoginForm(forms.Form):
   username = forms.CharField()
@@ -54,3 +54,13 @@ class RegisterForm(UserCreationForm):
 
     #     user = User.objects.create_user(username=username, email=email, first_name=first_name, password=password)
     #     return user
+
+
+class ProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ('proffession','edu_level')
+
+    proffession = forms.CharField( label="",widget=forms.TextInput(attrs={'class': 'form-control form-control-sm','placeholder': 'Type Your proffession'}))
+    edu_level = forms.ChoiceField(help_text = '<span class="form-text text-muted"><small>Your eduation level.</small></span>',label="", choices=Profile.EDU_LEVEL, widget=forms.Select(attrs={'class': 'form-control form-control-sm ','placeholder': 'Education Level'}))
+   

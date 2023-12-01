@@ -61,6 +61,13 @@ class Review(models.Model):
     content = models.TextField()
     rating = models.IntegerField()
 
+
+class Feedback(models.Model):
+    first_name = models.CharField(max_length=100)
+    email = models.EmailField(max_length=254)
+    message = models.TextField()
+    def __str__(self):
+        return self.first_name
 class Tag(models.Model):
     name = models.CharField(max_length=50)
 

@@ -26,8 +26,7 @@
           
           <div class="col-12 col-xl-8 mb-4 mb-xl-0">
             <h3 class="font-weight-bold"><span class="text-primary">{{topic}}</span> Tutorial</h3>
-            <h6 class="font-weight-normal mb-0">All systems are running smoothly! You have <span class="text-primary">3 unread alerts!</h6>
-          </div>
+              </div>
 
           <div class="col-12 col-xl-4 mb-4">
            <div class="justify-content-end d-flex">
@@ -44,7 +43,7 @@
             <div class="col-12 col-xl-4 mb-4">
               <div class="justify-content-start d-flex">
                <div class="dropdown flex-md-grow-1 flex-xl-grow-0">
-                <a href="{% url 'topicView' topic.id %}?direction=next"  class="btn btn-primary"> &lt; Next</a></div>
+                <a href="{% url 'topicView' topic.id %}?direction=next"  class="btn btn-primary"> Next &gt;</a></div>
                </div>
               </div>
             </div>
@@ -59,10 +58,10 @@
             <div class="col-md-12">
               <div class="card-body">
                 <h4 class="card-title">Learn {{topic}}</h4>
-                <p class="card-description">{{topic.descriptions|safe}} <code>.btn-{color}</code> for buttons in theme colors</p>
-                <button type="button" class="btn btn-success btn-rounded btn-fw">Start Learning {{topic}} now &gt;&gt;</button>
+                {{topic.descriptions|safe}}
               </div>
               <hr>
+              <a href="{% url 'topicView' topic.id %}?direction=next"  class="btn btn-primary"> Start Learning {{topic}} now &gt;&gt;</a>
             </div>
           </div>
         </div>
@@ -82,15 +81,37 @@
                     <div class="col-md-12">
                       <div class="card-body">
                         <h4 class="card-title">Examples</h4>
-                        <code>&lt;html&gt;&lt;/html&gt;</code> are 
-                        wrapped as an inline elements.
                         <pre>
-                            &lt;head&gt;
-                                &lt;title&gt;
-                                    GeeksforGeeks Bootstrap Code Example
-                                &lt;/title&gt;
-                            &lt;/head&gt;
-                        </pre>  <button type="button" class="btn btn-success btn-rounded btn-fw">Try it Yourself &gt;&gt;</button>
+        // Blinking LED Project
+
+        int led = 13;
+
+        void setup() {
+
+            pinMode(led, OUTPUT);
+
+        }
+        void loop() {
+
+            digitalWrite(led, HIGH);
+
+            delay(1000);
+
+            digitalWrite(led, LOW);
+
+            delay(1000);
+
+        }                        </pre>
+                        <button
+                        class= "btn btn-success btn-rounded btn-fw"
+                        type="button"
+                        class="btn btn-primary"
+                        data-toggle="modal"
+                        data-target="#Try"
+                       
+                      >
+                      Try it Yourself &gt;&gt;
+                      </button>
                       </div>
                     </div>
                   </div>
@@ -122,7 +143,7 @@
                 <div class="col-12 col-xl-4 mb-4">
                   <div class="justify-content-start d-flex">
                    <div class="dropdown flex-md-grow-1 flex-xl-grow-0">
-                    <a href="{% url 'topicView' topic.id %}?direction=next"  class="btn btn-primary"> &lt; Next</a></div>
+                    <a href="{% url 'topicView' topic.id %}?direction=next"  class="btn btn-primary"> Next &gt;</a></div>
                    </div>
                   </div>
                 </div>
@@ -158,8 +179,7 @@
           
           <div class="col-12 col-xl-8 mb-4 mb-xl-0">
             <h3 class="font-weight-bold"><span class="text-primary">{{topic.name}}</span> Tutorial</h3>
-            <h6 class="font-weight-normal mb-0"> <span class="text-primary">3 unread alerts!</h6>
-          </div>
+            </div>
 
           <div class="col-12 col-xl-4 mb-4">
            <div class="justify-content-end d-flex">
@@ -178,7 +198,7 @@
             <div class="col-12 col-xl-4 mb-4">
               <div class="justify-content-start d-flex">
                 <div class="dropdown flex-md-grow-1 flex-xl-grow-0">
-                 <a href="{% url 'topicView' topic.id %}?direction=next"  class="btn btn-primary"> &lt; Next</a>
+                 <a href="{% url 'topicView' topic.id %}?direction=next"  class="btn btn-primary">Next &gt;</a>
                 {% comment %} <button type="button" class="btn btn-primary">Next &gt;</button></div> {% endcomment %}
                 </div> 
               </div>
@@ -195,75 +215,16 @@
               <div class="card-body">
                 <h4 class="card-title">Learn{{topsic}}</h4>
                 <p class="card-description">{{topic.descriptions|safe }} </p>
-                <button type="button" class="btn btn-success btn-rounded btn-fw">Start Learning {{topic}} now &gt;&gt;</button>
-                {% comment %} <div class="template-demo">
-                  <button type="button" class="btn btn-secondary">Secondary</button>
-                  <button type="button" class="btn btn-success">Success</button>
-                  <button type="button" class="btn btn-danger">Danger</button>
-                  <button type="button" class="btn btn-warning">Warning</button>
-                  <button type="button" class="btn btn-info">Info</button>
-                  <button type="button" class="btn btn-light">Light</button>
-                  <button type="button" class="btn btn-dark">Dark</button>
-                  <button type="button" class="btn btn-link">Link</button>
-                </div> {% endcomment %}
-              </div>
+                 </div>
               <hr>
             </div>
-            {% comment %} <div class="col-md-6">
-              <div class="card-body">
-                <h4 class="card-title">Rounded buttons</h4>
-                <p class="card-description">Add class <code>.btn-rounded</code></p>
-                <div class="template-demo">
-                  <button type="button" class="btn btn-primary btn-rounded btn-fw">Primary</button>
-                  <button type="button" class="btn btn-secondary btn-rounded btn-fw">Secondary</button>
-                  <button type="button" class="btn btn-success btn-rounded btn-fw">Success</button>
-                  <button type="button" class="btn btn-danger btn-rounded btn-fw">Danger</button>
-                  <button type="button" class="btn btn-warning btn-rounded btn-fw">Warning</button>
-                  <button type="button" class="btn btn-info btn-rounded btn-fw">Info</button>
-                  <button type="button" class="btn btn-light btn-rounded btn-fw">Light</button>
-                  <button type="button" class="btn btn-dark btn-rounded btn-fw">Dark</button>
-                  <button type="button" class="btn btn-link btn-rounded btn-fw">Link</button>
-                </div>
-              </div>
-            </div> {% endcomment %}
+         
           </div>
         </div>
       </div>
     
-      {% comment %} Exanples {% endcomment %}
-      <div class="col-12 grid-margin stretch-card">
-        <div class="card">
-          <div class="row">
-            <div class="col-md-12">
-              <div class="card-body ">
-                <h4 class="card-title">Examples in Each topics</h4>
-                <p class="card-description">The "Try it Yourself" editor makes it easy to learn {{topic}}. You can edit 
-                  {{topic}} code and view the result in the simulation.</p>
-                <div class="card tale-bg">
-                  <div class="row">
-                    <div class="col-md-12">
-                      <div class="card-body">
-                        <h4 class="card-title">Examples</h4>
-                        <code>&lt;html&gt;&lt;/html&gt;</code> are wrapped as an inline elements.
-<pre>
-              &lt;head&gt;
-                  &lt;title&gt;
-                      GeeksforGeeks Bootstrap Code Example
-                  &lt;/title&gt;
-              &lt;/head&gt;
-</pre>
-  <button type="button" class="btn btn-success btn-rounded btn-fw">Try it Yourself &gt;&gt;</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <hr>
-            </div>
-          </div>
-        </div>
-      </div>
-
+     
+      
       {% comment %} Reference {% endcomment %}
       <div class="col-12 grid-margin stretch-card">
         <div class="card">
@@ -280,7 +241,7 @@
               </div>
             </div>
               <div class="col-12 col-xl-8 mb-4 mb-xl-0">
-                <a href="{% url 'topicView' topic.id %}?direction=next"  class="btn btn-primary"> &lt; Pre</a></div>
+                <a href="{% url 'topicView' topic.id %}?direction=next"  class="btn btn-primary"> &lt; Previous</a></div>
                 <div class="col-12 col-xl-4 mb-4">
                   <div class="justify-content-start d-flex">
                    <div class="dropdown flex-md-grow-1 flex-xl-grow-0">
@@ -313,5 +274,38 @@
 
 {%endif%}
 
+<div class="modal fade" id="Try"  tabindex="-1"   role="dialog"    aria-labelledby="Try" aria-hidden="false">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">
+          <span class="text-primary">Opps... </span>
+        </h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h5 class="modal-title" id="exampleModalLabel">
+          Sorry <span class="text-warning">
+          Coming Soon!
+        </span>
+        </h5>
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">
+          cancel
+        </button>
+       
+      </div>
+    </div>
+  </div>
+</div>
 
 {% endblock%}
