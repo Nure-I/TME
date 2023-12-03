@@ -133,7 +133,9 @@
                 <p class="card-description">Some List of links for additional Reference</p>
                 <div class="template-demo">
                   {% for reference in topic.resources.all%}
-                  <buton type="button" class="btn btn-outline-primary btn-fw">{{reference}}</buton>
+                  <a href="{{reference.url}}" download>
+                    <button type="button" class="btn btn-outline-primary btn-fw">{{ reference }}</button>
+                </a>
                   {% endfor%}
                   </div>
               </div>
