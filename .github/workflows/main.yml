@@ -1,0 +1,21 @@
+name: Sync Forks
+
+on:
+  push:
+    branches:
+      - main  # Adjust this to the default branch of your repository
+
+jobs:
+  sync-forks:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout original repository
+        uses: actions/checkout@v2
+
+      - name: Sync forks
+        run: |
+          git remote add upstream https://github.com/abivmsul/TME
+          git fetch upstream
+          git pull --rebase upstream main  # Adjust this to the default branch of your repository
+          git push origin main  # Adjust this to the default branch of your repository
