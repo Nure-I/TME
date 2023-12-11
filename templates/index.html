@@ -8,11 +8,8 @@
         <div class="row">
           <div class="col-12 col-xl-8 mb-4 mb-xl-0">
             <h3 class="font-weight-bold">Welcome {{user}}</h3>
-            <h3 class="font-weight-bold">
-            </h3>
-          
+            <h3 class="font-weight-bold"></h3>
           </div>
-       
         </div>
       </div>
     </div>
@@ -20,7 +17,10 @@
       <div class="col-md-6 grid-margin stretch-card">
         <div class="card tale-bg">
           <div class="card-people mt-auto">
-            <img src="https://willdom.com/wp-content/uploads/2023/06/arduino-projects.webp" alt="people" />
+            <img
+              src="https://willdom.com/wp-content/uploads/2023/06/arduino-projects.webp"
+              alt="people"
+            />
             <div class="weather-info">
               <div class="d-flex">
                 <div class="ml-2">
@@ -39,7 +39,6 @@
               <div class="card-body">
                 <p class="mb-4">Total Number fo Course</p>
                 <p class="fs-30 mb-2">{{course}}</p>
-              
               </div>
             </div>
           </div>
@@ -48,7 +47,6 @@
               <div class="card-body">
                 <p class="mb-4">Number of viewed Courses</p>
                 <p class="fs-30 mb-2">{{resource}}</p>
-                
               </div>
             </div>
           </div>
@@ -59,7 +57,6 @@
               <div class="card-body">
                 <p class="mb-4">Number of Downloaded Resources</p>
                 <p class="fs-30 mb-2">0</p>
-               
               </div>
             </div>
           </div>
@@ -68,7 +65,6 @@
               <div class="card-body">
                 <p class="mb-4">Number of Users</p>
                 <p class="fs-30 mb-2">{{users}}</p>
-                
               </div>
             </div>
           </div>
@@ -78,79 +74,222 @@
       <!-- content-wrapper ends -->
       <!-- partial:partials/_footer.html -->
     </div>
-    
+
     {%else%}
-
-    <div class="row">
-      <div class="col-md-12 grid-margin">
-        <div class="row">
-          <div class="col-12 col-xl-8 mb-4 mb-xl-0">
-            <h3 class="font-weight-bold">Welcome to Arduino Tutorials Hub!</h3>
-            <h3 class="font-weight-bold">
-              <span class="text-primary">
-                Learn, Create, and Innovate with Arduino</span
-              >
-            </h3>
+    <div id="hero-section" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner">
+        <!-- Image 1 -->
+        <div class="carousel-item active">
+          <img
+            src="https://willdom.com/wp-content/uploads/2023/06/arduino-projects.webp"
+            class="d-block w-100 rounded"
+            alt="Image 1"
+          />
+          <div class="carousel-caption d-none d-md-block">
+            <h2>Empowering Your Success</h2>
+          </div>
+        </div>
+        <!-- Image 2 -->
+        <div class="carousel-item">
+          <img
+            src="https://www.teacheracademy.eu/wp-content/uploads/2019/02/Arduino-768x510.jpg"
+            class="d-block w-100 rounded"
+            alt="Image 2"
+          />
+          <div class="carousel-caption d-none d-md-block">
+            <h2>Discover Innovation</h2>
+          </div>
+        </div>
+        <!-- Image 3 -->
+        <div class="carousel-item">
+          <img
+            src="https://i.all3dp.com/workers/images/fit=scale-down,w=1920,h=1080,gravity=0.5x0.5,format=auto/wp-content/uploads/2021/05/25100308/20181222_133954.jpg"
+            class="d-block w-100 rounded"
+            alt="Image 3"
+          />
+          <div class="carousel-caption d-none d-md-block">
+            <h2>Connect with Excellence</h2>
           </div>
         </div>
       </div>
+      <!-- Previous and Next Arrows -->
+      <a
+        class="carousel-control-prev"
+        href="#hero-section"
+        role="button"
+        data-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a
+        class="carousel-control-next"
+        href="#hero-section"
+        role="button"
+        data-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
     </div>
 
-    <div class="row">
-      <div class="col-md-12 grid-margin stretch-card">
-        <div class="card">
-          <div class="card-people mt-auto">
-            <img
-              src="https://willdom.com/wp-content/uploads/2023/06/arduino-projects.webp"
-              alt="people"
-            />
-            <div class="weather-info">
-              <div class="d-flex">
-                <div class="ml-2">
-                  <h4 class="location font-weight-bold text-primary">
-                    Along With TME
-                  </h4>
-                  <h6 class="font-weight-normal text-primary">Education</h6>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+    <div class="container mt-5 mb-5">
+      <div class="text-center">
+        <h2>Unlock Your Potential with Us</h2>
+        <p>
+          Discover amazing features that will revolutionize your experience.
+        </p>
+        <a href="{% url 'register'%}" class="btn btn-primary btn-lg"
+          >Get Started</a
+        >
       </div>
-
-      <!-- content-wrapper ends -->
-      <!-- partial:partials/_footer.html -->
     </div>
     <hr />
-    <div class="row">
-      <div class="col-md-12 grid-margin">
-        <div class="row justify-content-center">
-          <div class="col-12 col-xl-8 mb-4 mt-4 mb-xl-0">
-            <h3 class="font-weight-bold">Start Your Arduino Journey Today!</h3>
-            <h6 class="font-weight-normal mb-0">
-              🚀 Begin your Arduino adventure and Join our community and share
-              your projects with #TME Education ArduinoTutorials.
-            </h6>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-    <div class="row justify-content-center">
+    {% comment %}
+    <div class="row mt-4 justify-content-center">
       <div class="col-md-9 grid-margin stretch-card">
         <div class="card tale-bg">
           <div class="card-people mt-auto text-center">
-            <img src="https://res.cloudinary.com/dhv4s7zy8/image/upload/v1701443479/img_mgblur.jpg" alt="project" />
+            <img
+              src="https://res.cloudinary.com/dhv4s7zy8/image/upload/v1701443479/img_mgblur.jpg"
+              alt="project"
+            />
           </div>
         </div>
       </div>
       <!-- content-wrapper ends -->
       <!-- partial:partials/_footer.html -->
     </div>
-    <hr />
+    {% endcomment %}
+
+    <div class="container mt-5">
+      <h2 class="text-center mb-4">Explore Our Courses</h2>
+
+      <div class="row">
+        <!-- Course 1 -->
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="card">
+            <img
+              src="https://images.idgesg.net/images/article/2018/10/ai_robotics_analytics_data-scientist_mathematics_equation-100777424-large.jpg"
+              class="card-img-top"
+              style="height: 200px"
+              alt="Course 1 Image"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Introduction to Arduino Programming</h5>
+              <p class="card-text">
+                Learn the basics of Arduino programming and create your first
+                projects.
+              </p>
+              <a href="#" class="btn btn-primary">Learn the Course</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Course 2 -->
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="card">
+            <img
+              src="https://images.idgesg.net/images/article/2018/10/ai_robotics_analytics_data-scientist_mathematics_equation-100777424-large.jpg"
+              class="card-img-top"
+              style="height: 200px"
+              alt="Course 2 Image"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Advanced Robotics with Arduino</h5>
+              <p class="card-text">
+                Take your Arduino skills to the next level with advanced
+                robotics projects.
+              </p>
+              <a href="#" class="btn btn-primary">Learn the Course</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Course 3 -->
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="card">
+            <img
+              src="https://images.idgesg.net/images/article/2018/10/ai_robotics_analytics_data-scientist_mathematics_equation-100777424-large.jpg"
+              class="card-img-top"
+              alt="Course 3 Image"
+            />
+            <div class="card-body">
+              <h5 class="card-title">IoT Development with Arduino</h5>
+              <p class="card-text">
+                Explore the world of Internet of Things (IoT) using Arduino for
+                connected projects.
+              </p>
+              <a href="#" class="btn btn-primary">Learn the Course</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="card">
+            <img
+              src="https://images.idgesg.net/images/article/2018/10/ai_robotics_analytics_data-scientist_mathematics_equation-100777424-large.jpg"
+              class="card-img-top"
+              alt="Course 3 Image"
+            />
+            <div class="card-body">
+              <h5 class="card-title">IoT Development with Arduino</h5>
+              <p class="card-text">
+                Explore the world of Internet of Things (IoT) using Arduino for
+                connected projects.
+              </p>
+              <a href="#" class="btn btn-primary">Learn the Course</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="card">
+            <img
+              src="https://images.idgesg.net/images/article/2018/10/ai_robotics_analytics_data-scientist_mathematics_equation-100777424-large.jpg"
+              class="card-img-top"
+              alt="Course 3 Image"
+            />
+            <div class="card-body">
+              <h5 class="card-title">IoT Development with Arduino</h5>
+              <p class="card-text">
+                Explore the world of Internet of Things (IoT) using Arduino for
+                connected projects.
+              </p>
+              <a href="#" class="btn btn-primary">Learn the Course</a>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="card">
+            <img
+              src="https://images.idgesg.net/images/article/2018/10/ai_robotics_analytics_data-scientist_mathematics_equation-100777424-large.jpg"
+              class="card-img-top"
+              alt="Course 3 Image"
+            />
+            <div class="card-body">
+              <h5 class="card-title">IoT Development with Arduino</h5>
+              <p class="card-text">
+                Explore the world of Internet of Things (IoT) using Arduino for
+                connected projects.
+              </p>
+              <a href="#" class="btn btn-primary">Learn the Course</a>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- Add more courses as needed -->
+      </div>
+    </div>
+
+ 
+
     <div class="row">
       <div class="col-md-12 grid-margin">
-        <div class="row">
+        <div class="row mt-5">
           <div class="col-12 col-xl-8 mb-4 mb-xl-0">
             <h3 class="font-weight-bold">Exciting Project-Based Tutorials</h3>
             <h3 class="font-weight-bold">
@@ -161,6 +300,8 @@
       </div>
     </div>
 
+
+
     <div class="row">
       <div class="col-md-12 grid-margin transparent">
         <div class="row">
@@ -169,10 +310,10 @@
               <div class="card-body">
                 <p class="mb-4">Light Dimmer</p>
                 <p class="fs-30 mb-2">1</p>
-                <p>In this project, you’ll create 
-                  a dimmer switch by adding a
-                  potentiometer to control 
-                  the brightness of an LED.</p>
+                <p>
+                  In this project, you’ll create a dimmer switch by adding a
+                  potentiometer to control the brightness of an LED.
+                </p>
               </div>
             </div>
           </div>
@@ -181,15 +322,44 @@
               <div class="card-body">
                 <p class="mb-4">Bar Graph</p>
                 <p class="fs-30 mb-2">2</p>
-                <p>In this project, you’ll create 
-                  an LED bar graph that 
-                  you can control with a
-                  potentiometer</p>
+                <p>
+                  In this project, you’ll create an LED bar graph that you can
+                  control with a potentiometer
+                </p>
               </div>
             </div>
           </div>
         </div>
       </div>
+
+      
+       <!-- Video Section -->
+       <div id="video-section" class="container">
+        <h2 class="mb-4">Watch Our Introduction Video</h2>
+        <div class="embed-responsive embed-responsive-16by9">
+          <iframe
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/gaRBVYTHhYk?si=5qiIoYNtslqWooUI"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </div>
+  
+      <div class="container mt-4 mb-5">
+        <div class="text-center">
+          <h2>Start Your Arduino Journey Today!</h2>
+          <p>
+            🚀 Begin your Arduino adventure and Join our community and share your
+            projects with #TME Education ArduinoTutorials.
+          </p>
+        </div>
+      </div>
+
+      
       <hr />
       <div class="container" id="Feedback">
         <hr />
@@ -199,7 +369,9 @@
               <div class="col-lg-12 mx-auto">
                 <div class="auth-form-light text-center py-5 px-4 px-sm-5">
                   <div class="brand-logo">
-                    <img src="https://res.cloudinary.com/dhv4s7zy8/image/upload/v1701443479/ar_nfizmy.png" />
+                    <img
+                      src="https://res.cloudinary.com/dhv4s7zy8/image/upload/v1701443479/ar_nfizmy.png"
+                    />
                   </div>
 
                   <h4>Feedback / Contact Us</h4>
@@ -229,6 +401,10 @@
       <!-- partial:partials/_footer.html -->
     </div>
 
+
+
+      <hr />
+  
     {%endif%}
     <hr />
   </div>
