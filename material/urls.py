@@ -24,4 +24,9 @@ urlpatterns = [
    # path('approve/<int:request_id>/', views.approve_requests, name='approve_requests'),
       path('courseView/<int:courseId>/', views.courseView, name='courseView'),
       path('topicView/<int:topicId>/', views.topicView, name='topicView'),
+  
+  
+    path('projects', views.projects, name='projects'),
+    path('services', views.services, name='services'),
+    path('about', views.about, name='about'),
 ]

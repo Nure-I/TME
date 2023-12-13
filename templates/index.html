@@ -74,6 +74,185 @@
       <!-- content-wrapper ends -->
       <!-- partial:partials/_footer.html -->
     </div>
+    {% comment %} if the user is_authenticated {% endcomment %} 
+    {%elif user.is_authenticated%}
+
+    {% comment %} <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">{{user}}</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#progress-tracking">Progress Tracking</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="#course-overview">Course Overview</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#discussion-forums">Discussion Forums</a>
+          </li>
+          <!-- Add more navigation links as needed -->
+        </ul>
+      </div>
+    </nav> {% endcomment %}
+
+    <div class="container mt-4">
+      <header class="text-center my-4">
+        <h1>Welcome to Your Dashboard, {{user}}!</h1>
+      </header>
+
+      <section id="progress-tracking" class="my-4">
+        <h3 class="mb-3">Progress Tracking</h3>
+
+        <div class="card mb-3">
+          <div class="card-body">
+            <h5 class="card-title">Arduino Progress</h5>
+
+            <div class="progress" style="height: 20px">
+              <div
+                class="progress-bar bg-warning"
+                role="progressbar"
+                style="width: 45%"
+                aria-valuenow="45"
+                aria-valuemin="0"
+                aria-valuemax="100"
+              >
+                <span class="sr-only">45% Complete</span>
+              </div>
+            </div>
+
+            <p class="mt-2"><strong>Completed:</strong> course 1, course 2</p>
+            <p><strong>Upcoming:</strong> course 3</p>
+            <a href="#" class="btn btn-primary">Continue the Course</a>
+          </div>
+        </div>
+        <div class="card mb-3">
+          <div class="card-body">
+            <h5 class="card-title">Robotics  Progress</h5>
+
+            <div class="progress" style="height: 20px">
+              <div
+                class="progress-bar bg-success"
+                role="progressbar"
+                style="width: 85%"
+                aria-valuenow="85"
+                aria-valuemin="0"
+                aria-valuemax="100"
+              >
+                <span class="sr-only">85% Complete</span>
+              </div>
+            </div>
+
+            <p class="mt-2"><strong>Completed:</strong> course 1, course 2</p>
+            <p><strong>Upcoming:</strong> course 3</p>
+            <a href="#" class="btn btn-primary">Continue Course</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="course-overview" class="my-4">
+
+        <div class="container mt-5">
+          <h2 class="text-center mb-4">Course Overview</h2>
+
+          <div class="row">
+            <!-- Course 1 -->
+            <div class="col-lg-4 col-md-6 mb-4">
+              <div class="card">
+                <img
+                  src="https://images.idgesg.net/images/article/2018/10/ai_robotics_analytics_data-scientist_mathematics_equation-100777424-large.jpg"
+                  class="card-img-top"
+                  style="height: 200px"
+                  alt="Course 1 Image"
+                />
+                <div class="card-body">
+                  <h5 class="card-title">
+                    Introduction to Arduino Programming
+                  </h5>
+                  <p class="card-text">
+                    Learn the basics of Arduino programming and create your
+                    first projects.
+                  </p>
+                 
+                </div>
+              </div>
+            </div>
+
+            <!-- Course 2 -->
+            <div class="col-lg-4 col-md-6 mb-4">
+              <div class="card">
+                <img
+                  src="https://images.idgesg.net/images/article/2018/10/ai_robotics_analytics_data-scientist_mathematics_equation-100777424-large.jpg"
+                  class="card-img-top"
+                  style="height: 200px"
+                  alt="Course 2 Image"
+                />
+                <div class="card-body">
+                  <h5 class="card-title">Advanced Robotics with Arduino</h5>
+                  <p class="card-text">
+                    Take your Arduino skills to the next level with advanced
+                    robotics projects.
+                  </p>
+                
+                </div>
+              </div>
+            </div>
+
+            <!-- Course 3 -->
+            <div class="col-lg-4 col-md-6 mb-4">
+              <div class="card">
+                <img
+                  src="https://images.idgesg.net/images/article/2018/10/ai_robotics_analytics_data-scientist_mathematics_equation-100777424-large.jpg"
+                  class="card-img-top"
+                  alt="Course 3 Image"
+                />
+                <div class="card-body">
+                  <h5 class="card-title">IoT Development with Arduino</h5>
+                  <p class="card-text">
+                    Explore the world of Internet of Things (IoT) using Arduino
+                    for connected projects.
+                  </p>
+                
+                </div>
+              </div>
+            </div>
+
+            <!-- Add more courses as needed -->
+          </div>
+        </div>
+      </section>
+
+      <section id="discussion-forums" class="my-4">
+        <h2 class="mb-3">Discussion Forums</h2>
+        <div class="card">
+          <img
+            src="https://www.interview-skills.co.uk/blog/wp-content/uploads/2015/07/How-to-stand-out-group-tasks-discussions-1024x835.jpg"
+            class="card-img-top"
+            alt="Discussion Forum Image"
+          />
+          <div class="card-body">
+            <h5 class="card-title">Join the Discussion</h5>
+            <p class="card-text">
+              Connect with fellow learners. Share insights, ask questions, and
+              collaborate!
+            </p>
+            <a href="#" class="btn btn-primary">Go to Forum</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Add more sections with styled cards and images -->
+    </div>
 
     {%else%}
     <div id="hero-section" class="carousel slide" data-ride="carousel">
@@ -261,7 +440,6 @@
           </div>
         </div>
 
-
         <div class="col-lg-4 col-md-6 mb-4">
           <div class="card">
             <img
@@ -280,12 +458,9 @@
           </div>
         </div>
 
-
         <!-- Add more courses as needed -->
       </div>
     </div>
-
- 
 
     <div class="row">
       <div class="col-md-12 grid-margin">
@@ -299,8 +474,6 @@
         </div>
       </div>
     </div>
-
-
 
     <div class="row">
       <div class="col-md-12 grid-margin transparent">
@@ -332,8 +505,23 @@
         </div>
       </div>
       <hr />
+      <!-- Video Section -->
+      <div id="video-section" class="container">
+        <h2 class="mb-4">Explore our video Tutorials</h2>
+        <div class="embed-responsive embed-responsive-16by9">
+          <iframe
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/gaRBVYTHhYk?si=K4Nv9D0govx02RxC"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </div>
+      <hr />
       <div class="container" id="Feedback">
-        <hr />
         <div class="container-fluid page-body-wrapper full-page-wrapper">
           <div class="content-wrapper d-flex align-items-center auth px-0">
             <div class="row w-100 mx-0">
@@ -345,7 +533,7 @@
                     />
                   </div>
 
-                  <h4>Feedback / Contact Us</h4>
+                  <h4>Contact Us</h4>
 
                   <form method="post">
                     {% csrf_token %} {{ fform.as_p }}
@@ -372,10 +560,6 @@
       <!-- partial:partials/_footer.html -->
     </div>
 
-
-
-      <hr />
-  
     {%endif%}
     <hr />
   </div>

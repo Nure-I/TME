@@ -2,6 +2,7 @@ from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserChangeForm, UserCreationForm
 from .models import Profile
+from django.utils.safestring import mark_safe
 
 class LoginForm(forms.Form):
   username = forms.CharField()
@@ -28,7 +29,9 @@ class RegisterForm(UserCreationForm):
       self.fields['username'].widget.attrs['placeholder'] = 'User Name'
       self.fields['username'].label = ''
       self.fields['username'].help_text = '<span class="form-text text-muted"><small>Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.</small></span>'
-
+      #self.fields['username'] = forms.CharField(help_text=mark_safe('<span class="form-text text-muted"><small>Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.</small></span>'))
+      
+      
       self.fields['password1'].widget.attrs['class'] = 'form-control form-control-sm'
       self.fields['password1'].widget.attrs['placeholder'] = 'Password'
       self.fields['password1'].label = ''

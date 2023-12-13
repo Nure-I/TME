@@ -276,6 +276,18 @@ def topicView (request,topicId):
 
 
 
+def projects(request):
+  context= {  }
+  return render(request,'projects.html',context)
+
+def services(request):
+  context= {  }
+  return render(request,'services.html',context)
+
+def about(request):
+  context= {  }
+  return render(request,'about.html',context)
+
 # def index(request):
 #   page='index'
 #   context= {
