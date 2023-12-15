@@ -31,12 +31,13 @@ class EditCourseForm(forms.ModelForm):
 class EditSubTopicForm(forms.ModelForm):
     class Meta:
         model = Topic
-        fields = ('name', 'course','resources','descriptions','order')
+        fields = ('name', 'course','resources','descriptions','order','url')
 
     name = forms.CharField( widget=forms.TextInput(attrs={'class': 'form-control form-control-sm','placeholder': 'Course Title or Name'}))
     order = forms.IntegerField( widget=forms.NumberInput(attrs={'class': 'form-control form-control-sm','placeholder': 'Order Number For The Sub topic'}))
     resources = forms.ModelMultipleChoiceField(queryset=Resource.objects.all(), widget=forms.SelectMultiple(attrs={'class': 'form-control form-control-sm'}),required=False)
     course = forms.ModelChoiceField(queryset=Course.objects.all(), widget=forms.Select(attrs={'class': 'form-control form-control-sm'}))
+    url = forms.CharField( widget=forms.TextInput(attrs={'class': 'form-control form-control-sm','placeholder': 'Youtube url'}),required=False)
     # descriptions = forms.CharField(max_length=200, label="",widget=forms.Textarea(attrs={'class': 'form-control form-control-sm ','placeholder':'Descriptions'}))
   
 

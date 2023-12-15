@@ -51,6 +51,7 @@ class Topic(models.Model):
     resources = models.ManyToManyField(Resource, related_name='topics')
     order = models.PositiveIntegerField(default = 0)
     descriptions = RichTextField(blank=True,null=True)
+    url = models.URLField(blank=True)
 
     def __str__(self):
         return self.course.name

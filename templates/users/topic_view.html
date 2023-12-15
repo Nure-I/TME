@@ -66,62 +66,41 @@
           </div>
         </div>
       </div>
-    
-      {% comment %} Exanples {% endcomment %}
-      <div class="col-12 grid-margin stretch-card">
-        <div class="card">
-          <div class="row">
-            <div class="col-md-12">
-              <div class="card-body ">
-                <h4 class="card-title">Examples in Each topics</h4>
-                <p class="card-description">The "Try it Yourself" editor makes it easy to learn {{topic}}. You can edit 
-                  {{topic}} code and view the result in the simulation.</p>
-                <div class="card tale-bg">
-                  <div class="row">
-                    <div class="col-md-12">
-                      <div class="card-body">
-                        <h4 class="card-title">Examples</h4>
-                        <pre>
-        // Blinking LED Project
-
-        int led = 13;
-
-        void setup() {
-
-            pinMode(led, OUTPUT);
-
-        }
-        void loop() {
-
-            digitalWrite(led, HIGH);
-
-            delay(1000);
-
-            digitalWrite(led, LOW);
-
-            delay(1000);
-
-        }                        </pre>
-                        <button
-                        class= "btn btn-success btn-rounded btn-fw"
-                        type="button"
-                        class="btn btn-primary"
-                        data-toggle="modal"
-                        data-target="#Try"
-                       
-                      >
-                      Try it Yourself &gt;&gt;
-                      </button>
-                      </div>
-                    </div>
+  {% comment %} Exanples {% endcomment %}
+  <div class="col-12 grid-margin stretch-card">
+    <div class="card">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card-body ">
+            <h4 class="card-title">Examples in Each topics</h4>
+            <p class="card-description">The "Try it Yourself" editor makes it easy to learn {{topic}}. You can edit 
+              {{topic}} code and view the result in the simulation.</p>
+            <div class="card tale-bg">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="card-body">
+                    <h4 class="card-title">Examples</h4>
+               iframe
+                    <button
+                    class= "btn btn-success btn-rounded btn-fw"
+                    type="button"
+                    class="btn btn-primary"
+                    data-toggle="modal"
+                    data-target="#Try"
+                   
+                  >
+                  Try it Yourself &gt;&gt;
+                  </button>
                   </div>
                 </div>
               </div>
-              <hr>
             </div>
           </div>
+          <hr>
         </div>
       </div>
+    </div>
+  </div>
 
       {% comment %} Reference {% endcomment %}
       <div class="col-12 grid-margin stretch-card">
@@ -137,9 +116,28 @@
                     <button type="button" class="btn btn-outline-primary btn-fw">{{ reference }}</button>
                 </a>
                   {% endfor%}
+
+                  {%if topic.url%}
+                  <div class="card tale-bg mt-3">
+                    <div class="">
+                      <div class="col-md-12">
+                        <div class="card-body">
+                          <h4 class="card-title">Video</h4>
+                          <div class="embed-responsive embed-responsive-16by9">
+                           <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ topic.url|cut:"https://www.youtube.com/watch?v=" }}" frameborder="0" allowfullscreen></iframe>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  {%endif%}
+
+                  
                   </div>
               </div>
+              
             </div>
+            
               <div class="col-12 col-xl-8 mb-4 mb-xl-0">
                 <a href="{% url 'topicView' topic.id %}?direction=prev"  class="btn btn-primary"> &lt; Previous</a></div>
                 <div class="col-12 col-xl-4 mb-4">
@@ -239,6 +237,24 @@
                   {% for reference in topic.resources.all%}
                   <buton type="button" class="btn btn-outline-primary btn-fw">{{reference}}</buton>
                   {% endfor%}
+
+                  {%if topic.url%}
+                  <div class="card tale-bg mt-3">
+                    <div class="">
+                      <div class="col-md-12">
+                        <div class="card-body">
+                          <h4 class="card-title">Video</h4>
+                          <div class="embed-responsive embed-responsive-16by9">
+                           <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ topic.url|cut:"https://www.youtube.com/watch?v=" }}" frameborder="0" allowfullscreen></iframe>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  {%endif%}
+
+
+
                   </div>
               </div>
             </div>

@@ -43,7 +43,7 @@ def courseList(request):
 def courseDetail(request,courseId):
  # course = Course.objects.prefetch_related('resources').get(id= courseId)
   course = Course.objects.get(id= courseId)
-  subTopics = Topic.objects.filter(course=course) 
+  subTopics = Topic.objects.filter(course=course).order_by('order')
   if request.method == 'POST':
     form_identifier = request.POST.get('form_identifier')
     if form_identifier == 'courseForm':

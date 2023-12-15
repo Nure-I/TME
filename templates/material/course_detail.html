@@ -135,11 +135,11 @@
               </div> {% endcomment %}
            
               {% for topic in subTopics %}
-              <div class="col-md-3 mb-4 stretch-card transparent">
+              <div class="col-md-3 mb-3 mt-3 stretch-card transparent">
                 <div class="card card-tale">
                   <div class="card-body">
-                    <p class="mb-2">{{topic}}</p>
-                    <p class="">({{topic.order}})</p>
+                    <p class="mb-2">{{topic.name}}</p>
+                    <p class="">Order :{{topic.order}}</p>
                     {% for r in topic.resources_set.all %}
                     <img src="{% static 'img/andelus-logo1.png '%}" width="75px" class="mr-4" alt="logo"/>
                     {{r}}

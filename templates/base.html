@@ -149,6 +149,10 @@
     {%for msg in messages %}
  alertify.success('{{msg}}');
   {% endfor %}
+{% comment %} 
+  $('#showInputCheckbox').change(function () {
+    $('#hiddenInputContainer').collapse(this.checked ? 'show' : 'hide');
+  }); {% endcomment %}
   </script>
 
 
